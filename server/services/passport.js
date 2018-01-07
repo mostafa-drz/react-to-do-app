@@ -6,8 +6,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 
 //Passport local staretegy for sign in
-const localStrategyOptions = { usernameField: email };
-const localStrategy = new LocalStrategy(localStrategyOptions, (email, password, done) => {
+const localStrategyOptions = { usernameField: 'email' };
+const localLogin = new LocalStrategy(localStrategyOptions, (email, password, done) => {
     User.findOne({ email })
         .then((user) => {
             if (!user) {
@@ -30,11 +30,11 @@ const localStrategy = new LocalStrategy(localStrategyOptions, (email, password, 
 
 //JWT strategy
 const JwtStrategyOptions = {
-    jwtFromRequest: ExtractJwt.fromheader('authorization'),
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
     secretOrKey: JWT_SECRET_KEY
 };
 
-const JwtStrategy = new JwtStrategy(JwtStrategyOptions, (payload, done) => {
+const JwtLogin = new JwtStrategy(JwtStrategyOptions, (payload, done) => {
     User.findById(payload.sub)
         .then((user) => {
             if (!user) {
@@ -48,5 +48,5 @@ const JwtStrategy = new JwtStrategy(JwtStrategyOptions, (payload, done) => {
         });
 });
 
-passport.use(localStrategy);
-passport.use(JwtStrategy);
+passport.use(localLogin);
+passport.use(JwtLogin);
