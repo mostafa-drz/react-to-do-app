@@ -1,13 +1,12 @@
 const User = require('../models/user');
 const { tokenGenrator } = require('../utils/helper');
 
-module.exports.login = (req, res, next) => {
+const login = (req, res, next) => {
     res.send({ token: tokenGenrator(req.user) });
 };
 
-module.exports.signup = (req, res, next) => {
+const signup = (req, res, next) => {
     const { email, password } = req.body;
-    console.log(req.body);
     if (!email || !password) {
         return res.status(422).send({ error: 'you should provide valid email and password' });
     }
@@ -35,3 +34,5 @@ module.exports.signup = (req, res, next) => {
             return next(error);
         });
 };
+
+module.exports = { login, signup };
