@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', requireAuth, (req, res, next) => {
-    res.send({ message: 'here we go' });
+    res.status(200).send({ message: 'here we go' });
 });
 
 router.post('/login', requireLogIn, login);
