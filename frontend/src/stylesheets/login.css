@@ -1,0 +1,32 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login__input {
+    max-width: 500px;
+}
+
+#login__btn {
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: #1a237e;
+}
+
+#login__btn:hover {
+    background-color: #1a227e;
+}
+
+.login__signup {
+    color: #00897b;
+    font-size: 15px;
+}
+
+.login__signup:hover {
+    border-bottom: 1px solid #004d40;
+    margin-top: 10px;
+    transition: all .5s ease-in-out;
+}

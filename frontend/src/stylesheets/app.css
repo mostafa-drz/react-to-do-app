@@ -1,0 +1,5 @@
+.body {
+    background: #e3f2fd;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+}
