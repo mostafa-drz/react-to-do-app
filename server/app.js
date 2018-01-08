@@ -11,6 +11,6 @@ app.use(bodyParser.json());
 const authRouter = require('./routers/auth');
 app.use(authRouter);
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log('server is running');
 });
