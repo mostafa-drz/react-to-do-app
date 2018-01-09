@@ -1,18 +1,26 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchToDos} from '../actions/todo';
-
+import ToDo from './ToDo';
+import '../stylesheets/todolist.css'
 class ToDoList extends Component{
-    componentDidMount(){
-        this.props.fetchToDos();
-    }
+    
     render(){
-        return(
-            <div className="todolist">
-                here is tod list
-            </div>
-        );
+        const { todos } = this.props;
+        console.log(todos);
+        return <div className="todolist container">
+              <ul className="todolist__list">
+                {todos.map(todo => <li key={todo._id}>
+                    <ToDo {...todo}/>
+                  </li>)}
+              </ul>
+          </div>;
     }
 }
 
-export default connect(null,{fetchToDos})(ToDoList);
+function mapStateToProps(state){
+    return{
+        todos:state.todo
+    }
+}
+export default connect(mapStateToProps)(ToDoList);

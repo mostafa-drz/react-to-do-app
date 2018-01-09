@@ -1,0 +1,30 @@
+.todo {
+    padding: 10px;
+    background-color: #fafafa;
+    margin-top: 2%;
+    padding: 20px;
+    -webkit-box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    transition: box-shadow .5s ease-out;
+}
+
+.todo:active {
+    -webkit-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    transition: box-shadow .5s ease-out;
+}
+
+.todo__date {
+    font-size: 10px;
+    color: gray;
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.todo__description {
+    font-size: 16px;
+    color: #01579b;
+}

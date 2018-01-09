@@ -50,7 +50,6 @@ export const fetchToDos = () => {
             }
         }).then((res) => {
             if (res.status === 200) {
-                console.log(res.data);
                 dispatch({ type: GET_TO_DOS, todos: res.data.todos });
                 return Promise.resolve();
             } else if (res.status >= 500) {
