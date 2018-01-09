@@ -24,13 +24,17 @@ const signup = (req, res, next) => {
 
             user.save()
                 .then(() => {
-                    res.send({ token: tokenGenrator(user) });
+                    res.status(200).send({ token: tokenGenrator(user) });
                 })
                 .catch((error) => {
+                    res.status(400).send({ message: 'something went wrong' });
                     return next(error);
                 });
         })
         .catch((error) => {
+            res
+                .status(400)
+                .send({ message: "something went wrong" });
             return next(error);
         });
 };

@@ -3,10 +3,12 @@ import '../stylesheets/login.css';
 import {connect} from 'react-redux';
 import {logInOnServer} from '../actions/auth';
 import MdErrorOutline from "react-icons/lib/md/error-outline";
+import {Link} from 'react-router-dom'
+import Signup from './Signup';
 class Login extends Component{
     constructor(props){
         super(props);
-        this.state={email:'',password:'',error:''}
+        this.state={email:'',password:'',error:''};
         this._handleEmailInputChange = this._handleEmailInputChange.bind(this);
         this._handlePasswordInputChange = this._handlePasswordInputChange.bind(this);
         this.login=this.login.bind(this);
@@ -32,17 +34,18 @@ class Login extends Component{
         });
    }
     render(){
-        return <div className="container login">
-            {this.state.error && this.state.error.length>2 && <p className="login__error"><MdErrorOutline/> {this.state.error}</p>}
-            <input type="email" placeholder="email.." value={this.state.email} className="login__input" onChange={e =>this._handleEmailInputChange(e.target) }/>
-            <input type="password" placeholder="password..." value={this.state.password} className="login__input" onChange={e=>this._handlePasswordInputChange(e.target)}/>
-            <button type="button" className="btn" id="login__btn" onClick={this.login}>
-              Sign In
-            </button>
-            <a href="#" className="login__signup">
-              Not a Member?
-            </a>
-          </div>;
+     return(
+            <div className="container login">
+                {this.state.error && this.state.error.length>2 && <p className="login__error"><MdErrorOutline/> {this.state.error}</p>}
+                <input type="email" placeholder="email.." value={this.state.email} className="login__input" onChange={e =>this._handleEmailInputChange(e.target) }/>
+                <input type="password" placeholder="password..." value={this.state.password} className="login__input" onChange={e=>this._handlePasswordInputChange(e.target)}/>
+                <button type="button" className="btn" id="login__btn" onClick={this.login}>
+                Sign In
+                </button>
+                <Link to='/signup' className="login__signup">
+                Not a Member?
+                </Link>
+            </div>);
     }
 }
 
