@@ -1,4 +1,4 @@
-import { USER_TOKEN_KEY } from "../config.js/index";
+import { USER_TOKEN_KEY } from "../config/index";
 
 const setTheTokenOnStorage = token => {
     localStorage.setItem(USER_TOKEN_KEY, token);
