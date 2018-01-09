@@ -30,3 +30,9 @@
     margin-top: 10px;
     transition: all .5s ease-in-out;
 }
+
+.login__error {
+    font-size: 14px;
+    color: red;
+    text-align: left;
+}
