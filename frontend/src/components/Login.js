@@ -28,7 +28,7 @@ class Login extends Component{
    login(){
         this.props.logInOnServer({email:this.state.email,password:this.state.password})
         .then(()=>{
-            console.log('Welcome!')
+           this.props.history.push('/dashboard');
         }).catch((error)=>{
             this.setState({error:error.message});
         });

@@ -1,10 +1,11 @@
-import { LOGIN, LOG_OUT } from './types';
+import { LOG_OUT, AUTH } from './types';
 import axios from 'axios';
-export function logIn({ email, token }) {
+import { setTheTokenOnStorage } from '../utils/helpers';
+
+export function authenticate({ auth }) {
     return {
-        type: LOGIN,
-        email,
-        token
+        type: AUTH,
+        auth
     }
 };
 
@@ -23,7 +24,8 @@ export const logInOnServer = ({ email, password }) => {
                 }
             });
             if (res.status === 200) {
-                dispatch({ type: LOGIN, email, token: res.data.token })
+                dispatch({ type: AUTH, auth: true });
+                setTheTokenOnStorage(res.data.token);
             } else if (res.status === 401) {
                 throw Error('The entered email or password is not correct');
             } else {
@@ -37,7 +39,6 @@ export const logInOnServer = ({ email, password }) => {
 }
 
 export const signUpOnServer = ({ email, password }) => {
-    console.log('Here in the actions');
     return async(dispatch) => {
         try {
             const res = await axios.post('/api/signup', { email, password }, {
@@ -46,14 +47,14 @@ export const signUpOnServer = ({ email, password }) => {
                 }
             });
             if (res.status === 200) {
-                dispatch({ type: LOGIN, email, token: res.data.token })
-            } else if (res.status = 422) {
+                dispatch({ type: AUTH, auth: true });
+                setTheTokenOnStorage(res.data.token);
+            } else if (res.status === 422) {
                 return Promise.reject('The email is in use');
             }
-            console.log(res);
-            return Promise.resolve(res.data);
+            return Promise.resolve();
         } catch (error) {
             return Promise.reject(error);
-        };
+        }
     }
 }
