@@ -8,6 +8,10 @@ const getTheTokenOnStorage = () => {
     return localStorage.getItem(USER_TOKEN_KEY);
 }
 
+const removeTokenOnStorage = () => {
+    localStorage.removeItem(USER_TOKEN_KEY);
+}
+
 const isUserAuthorized = () => {
     const token = getTheTokenOnStorage();
     if (token && token.length > 3) {
@@ -34,4 +38,4 @@ const getRequestConfig = () => {
         }
     };
 };
-export { setTheTokenOnStorage, getTheTokenOnStorage, isUserAuthorized, responseErrorHandler, getRequestConfig };
+export { setTheTokenOnStorage, getTheTokenOnStorage, isUserAuthorized, responseErrorHandler, getRequestConfig, removeTokenOnStorage };
