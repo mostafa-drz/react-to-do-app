@@ -61,7 +61,7 @@ const upddateAToDo = (req, res, next) => {
 }
 
 const deleteAToDo = (req, res, next) => {
-    const { _id } = req.body;
+    const _id = req.params.id;
     if (!_id) {
         return res.status(400).send({ message: "Bad request" });
     }

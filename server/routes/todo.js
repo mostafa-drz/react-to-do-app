@@ -9,6 +9,6 @@ router.post('/api/todos', requireAuth, addToDo);
 
 router.put('/api/todos', requireAuth, upddateAToDo);
 
-router.delete('/api/todos', requireAuth, deleteAToDo);
+router.delete('/api/todos/:id', requireAuth, deleteAToDo);
 
 module.exports = router;
