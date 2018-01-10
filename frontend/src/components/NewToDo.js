@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToDoOnServer } from '../actions/todo';
+import '../stylesheets/newToDo.css';
 class NewToDo extends Component {
     constructor(props) {
         super(props);
@@ -22,17 +23,16 @@ class NewToDo extends Component {
         this.setState({ todo: { description: '' } });
     }
     render() {
-        return ( < input type = "text"
-            placeholder = "What else?..."
-            value = { this.state.todo.description }
-            onKeyPress = {
-                (e) => { this._handleKeyPress(e) }
-            }
-            onChange = {
-                (e) => { this._handelInputChange(e.target) }
-            }
-            />
-        );
+        return <div className="newToDo">
+            <input type="text" placeholder="What else?..." 
+            id="newToDo__description" 
+            value={this.state.todo.description} o
+            nKeyPress={e => {
+                this._handleKeyPress(e);
+              }} onChange={e => {
+                this._handelInputChange(e.target);
+              }} />
+          </div>;
     }
 }
 
