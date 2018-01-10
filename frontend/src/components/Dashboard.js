@@ -7,7 +7,9 @@ import NewToDo from './NewToDo';
 import '../stylesheets/dashboard.css';
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.fetchToDos();
+    this.props.fetchToDos().catch((error)=>{
+      console.log(error.message);
+    });
   }
   render() {
     return (

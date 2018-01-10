@@ -21,7 +21,9 @@ class ToDo extends Component {
     e.preventDefault();
     e.stopPropagation();
     const {_id}=this.props.todo;
-    this.props.deleteAToDoOnTheServer({_id});
+    this.props.deleteAToDoOnTheServer({_id}).catch((error)=>{
+      console.log(error.message);
+    });
    }
     render() {
       const {completed,date,description}=this.props.todo;
