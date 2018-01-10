@@ -46,7 +46,7 @@ class ToDo extends Component {
     render() {
       const {completed,date,description}=this.props.todo;
       const {editMode}=this.state;
-        return !editMode ? (<div className={completed ? "todo todo__completed" : "todo"} onClick={this._handleToDoClick}>
+        return !editMode ? (<div className={completed ? "todo todo--completed" : "todo"} onClick={this._handleToDoClick}>
             <p className="right todo__date">
               {date && moment(date).format("dddd D MMM HH:mm")}
             </p>

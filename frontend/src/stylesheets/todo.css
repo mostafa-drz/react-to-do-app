@@ -34,9 +34,12 @@
     display: inline-block;
 }
 
-.todo__completed {
+.todo--completed {
     font-style: italic;
     background-color: rgba(128, 128, 128, 0.165);
+}
+
+.todo--completed .todo__description {
     text-decoration: line-through;
 }
 
