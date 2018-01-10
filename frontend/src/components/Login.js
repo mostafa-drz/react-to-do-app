@@ -45,7 +45,7 @@ class Login extends Component{
                 <Link to='/signup' className="login__signup">
                 Not a Member?
                 </Link>
-            </div>);
+            </div>)
     }
 }
 

@@ -9,11 +9,10 @@ export function addToDo(todo) {
     };
 }
 
-export function updateToDo(_id, update) {
+export function updateToDo(update) {
     return {
         type: UPDATE_TO_DO,
-        ...update,
-        _id
+        update,
     }
 }
 
@@ -65,5 +64,23 @@ export const fetchToDos = () => {
         }).catch((error) => {
             return Promise.reject(error);
         });
+    }
+}
+
+export const updateToDoOnTheServer = (update) => {
+    return (dispatch) => {
+        axios.put('/api/todos', update, { headers: { 'authorization': getTheTokenOnStorage() } })
+            .then((res) => {
+                if (res.status === 200) {
+                    dispatch({ type: UPDATE_TO_DO, update: res.data });
+                    return Promise.resolve();
+                } else if (res.status >= 500) {
+                    throw Error('Something went wrong on the server');
+                } else {
+                    throw Error(res.data.message || 'Undefined error message');
+                }
+            }).catch((error) => {
+                return Promise.reject(error);
+            });
     }
 }

@@ -28,3 +28,9 @@
     font-size: 16px;
     color: #01579b;
 }
+
+.todo__completed {
+    font-style: italic;
+    background-color: rgba(128, 128, 128, 0.165);
+    text-decoration: line-through;
+}

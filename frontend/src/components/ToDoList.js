@@ -7,11 +7,10 @@ class ToDoList extends Component{
     
     render(){
         const { todos } = this.props;
-        console.log(todos);
         return <div className="todolist container">
               <ul className="todolist__list">
                 {todos.map(todo => <li key={todo._id}>
-                    <ToDo {...todo}/>
+                    <ToDo todo={todo}/>
                   </li>)}
               </ul>
           </div>;
