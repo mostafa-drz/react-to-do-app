@@ -2,7 +2,7 @@ const ToDo = require("../models/todo");
 
 
 const getUserToDos = (req, res, next) => {
-    ToDo.find({ _user: req.user.id })
+    ToDo.find({ _user: req.user.id, deleted: false })
         .then(todos => {
             res.status(200).send({ todos });
         })
@@ -60,4 +60,36 @@ const upddateAToDo = (req, res, next) => {
         });
 }
 
-module.exports = { getUserToDos, addToDo, upddateAToDo };
+const deleteAToDo = (req, res, next) => {
+    const { _id } = req.body;
+    if (!_id) {
+        return res.status(400).send({ message: "Bad request" });
+    }
+    ToDo.findById(_id)
+        .then(todo => {
+            if (!todo) {
+                return res.status(400).send({ message: "Bad request" });
+            }
+            if (todo._user.toString() === req.user.id) {
+                todo.deleted = true;
+                todo
+                    .save()
+                    .then(updated => {
+                        res.status(200).send(updated);
+                    })
+                    .catch(error => {
+                        res.status(500).send({ message: "Internal error happened" });
+                    });
+            } else {
+                return res
+                    .status(401)
+                    .send({
+                        message: "You are not authorized to complete this action"
+                    });
+            }
+        })
+        .catch(error => {
+            res.status(500).send({ message: "Internal error happened" });
+        });
+}
+module.exports = { getUserToDos, addToDo, upddateAToDo, deleteAToDo };
