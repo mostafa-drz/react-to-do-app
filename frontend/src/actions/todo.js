@@ -42,7 +42,7 @@ export const addToDoOnServer = (todo) => {
                 throw Error(res.data.message);
             }
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
 
     };
@@ -58,7 +58,7 @@ export const fetchToDos = () => {
             }
             responseErrorHandler(res);
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
     }
 }
@@ -73,7 +73,7 @@ export const updateToDoOnTheServer = (update) => {
             }
             responseErrorHandler(res);
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
     }
 }
@@ -88,7 +88,7 @@ export const deleteAToDoOnTheServer = ({ _id }) => {
             }
             responseErrorHandler(res);
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
     }
 }

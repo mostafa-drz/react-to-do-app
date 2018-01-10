@@ -1,6 +1,7 @@
 import { LOG_OUT, AUTH } from './types';
 import axios from 'axios';
 import { setTheTokenOnStorage } from '../utils/helpers';
+import { responseErrorHandler } from "../utils/helpers";
 
 export function authenticate({ auth }) {
     return {
@@ -26,14 +27,12 @@ export const logInOnServer = ({ email, password }) => {
             if (res.status === 200) {
                 dispatch({ type: AUTH, auth: true });
                 setTheTokenOnStorage(res.data.token);
-            } else if (res.status === 401) {
-                throw Error('The entered email or password is not correct');
-            } else {
-                throw Error('Something went wrong during log in on the server');
+                return Promise.resolve();
             }
-            return Promise.resolve();
+            responseErrorHandler(res);
+
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
     }
 }
@@ -49,12 +48,11 @@ export const signUpOnServer = ({ email, password }) => {
             if (res.status === 200) {
                 dispatch({ type: AUTH, auth: true });
                 setTheTokenOnStorage(res.data.token);
-            } else if (res.status === 422) {
-                return Promise.reject('The email is in use');
+                return Promise.resolve();
             }
-            return Promise.resolve();
+            responseErrorHandler(res);
         } catch (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.message);
         }
     }
 }

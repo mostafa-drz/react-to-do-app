@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const { tokenGenrator } = require('../utils/helper');
-
 const login = (req, res, next) => {
     res.send({ token: tokenGenrator(req.user) });
 };
@@ -8,13 +7,13 @@ const login = (req, res, next) => {
 const signup = (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) {
-        return res.status(422).send({ error: 'you should provide valid email and password' });
+        return res.status(422).send({ message: 'you should provide valid email and password' });
     }
 
     User.findOne({ email })
         .then((foundUser) => {
             if (foundUser) {
-                return res.status(422).send({ error: 'email is in use' });
+                return res.status(422).send({ message: 'email is in use' });
             }
 
             const user = new User({

@@ -20,7 +20,7 @@ class Signup extends Component{
                 email,
                 password
             }).then(()=>{
-                console.log('done');
+                this.props.history.push('/dashboard');
             }).catch((error)=>{
                 this.setState({error:error});
             });
