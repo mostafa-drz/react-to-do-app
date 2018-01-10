@@ -12,7 +12,6 @@ class EditToDo extends Component{
     
     componentDidMount(){
         this.setState({todo:{description:this.props.todo.description}});
-        this.input.focus();
     }
 
     _handleInputChange(target){
@@ -32,7 +31,7 @@ class EditToDo extends Component{
         return(
             <div className='editToDo'>
                 <input 
-                ref={(input)=>{this.input=input;}} 
+                autoFocus="true"
                 className='editToDo__description' 
                 type="text" 
                 value={description} 
