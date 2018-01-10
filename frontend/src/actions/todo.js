@@ -25,20 +25,25 @@ export function getToDos() {
 
 export const addToDoOnServer = (todo) => {
     return (dispatch) => {
-        axios.post('/api/todos')
-            .then((res) => {
+        axios
+            .post("/api/todos", todo, {
+                headers: {
+                    authorization: getTheTokenOnStorage()
+                }
+            })
+            .then(res => {
                 if (res.status === 200) {
                     dispatch({ type: ADD_TO_DO, todo: res.data });
                     return Promise.resolve();
                 } else if (res.status >= 500) {
-                    throw Error('Something went wrong on the server');
+                    throw Error("Something went wrong on the server");
                 } else {
                     throw Error(res.data.message);
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 return Promise.reject(error);
-            })
+            });
     }
 }
 
