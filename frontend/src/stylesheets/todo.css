@@ -9,6 +9,10 @@
     transition: box-shadow .5s ease-out;
 }
 
+.todo:hover {
+    opacity: .8;
+}
+
 .todo:active {
     -webkit-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
@@ -27,6 +31,7 @@
 .todo__description {
     font-size: 16px;
     color: #01579b;
+    display: inline-block;
 }
 
 .todo__completed {
@@ -36,15 +41,25 @@
 }
 
 .todo__deleteIcon {
-    float: left;
-    display: block;
+    display: inline-block;
     color: rgba(255, 0, 0, 0.309);
-    margin-right: 10px;
+    margin-right: 5px;
     font-size: 16px;
-    ;
 }
 
 .todo__deleteIcon:hover {
     color: rgb(255, 0, 0);
-    transition: color .5s ease;
+    transition: color .3s ease;
+}
+
+.todo__editIcon {
+    display: inline-block;
+    color: rgba(255, 166, 0, 0.508);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.todo__editIcon:hover {
+    color: rgb(255, 145, 0);
+    transition: color .3s ease;
 }

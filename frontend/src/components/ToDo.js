@@ -3,12 +3,18 @@ import moment from 'moment';
 import {updateToDoOnTheServer,deleteAToDoOnTheServer} from '../actions/todo';
 import {connect} from 'react-redux';
 import MdHighlightRemove from "react-icons/lib/md/highlight-remove";
+import MdEdit from "react-icons/lib/md/edit"
 import '../stylesheets/todo.css';
+import EditToDo from './EditToDo';
+
 class ToDo extends Component {
    constructor(props){
      super(props);
+     this.state={editMode:false}
      this._handleToDoClick=this._handleToDoClick.bind(this);
-       this._handleDeleteButton = this._handleDeleteButton.bind(this);
+     this._handleDeleteButton = this._handleDeleteButton.bind(this);
+     this._handleEditButton = this._handleEditButton.bind(this);
+     this._editDone = this._editDone.bind(this);
    }
 
    _handleToDoClick(){
@@ -18,24 +24,42 @@ class ToDo extends Component {
    }
 
    _handleDeleteButton(e){
-    e.preventDefault();
-    e.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     const {_id}=this.props.todo;
     this.props.deleteAToDoOnTheServer({_id}).catch((error)=>{
       console.log(error.message);
     });
    }
+
+   _handleEditButton(e){
+      e.preventDefault();
+      e.stopPropagation();
+      this.setState({editMode:true});
+
+   }
+
+   _editDone(){
+     this.setState({editMode:false});
+   }
+   
     render() {
       const {completed,date,description}=this.props.todo;
-        return <div className={completed ? "todo todo__completed" : "todo"} onClick={this._handleToDoClick}>
-            <span className="todo__deleteIcon" onClick={(e)=>this._handleDeleteButton(e)}>
-              <MdHighlightRemove />
-            </span>
+      const {editMode}=this.state;
+        return !editMode ? (<div className={completed ? "todo todo__completed" : "todo"} onClick={this._handleToDoClick}>
             <p className="right todo__date">
               {date && moment(date).format("dddd D MMM HH:mm")}
             </p>
+            <span className="todo__deleteIcon" onClick={e => this._handleDeleteButton(e)}>
+              <MdHighlightRemove />
+            </span>
+            <span className="todo__editIcon" onClick={e=>this._handleEditButton(e)}>
+              <MdEdit />
+            </span>
             <p className="todo__description">{description}</p>
-          </div>;
+          </div>)
+        :
+        (<EditToDo todo={this.props.todo} onEditDone={this._editDone}/>)
     }
 }
 
