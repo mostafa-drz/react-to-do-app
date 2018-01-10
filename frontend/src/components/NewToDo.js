@@ -26,8 +26,8 @@ class NewToDo extends Component {
         return <div className="newToDo">
             <input type="text" placeholder="What else?..." 
             id="newToDo__description" 
-            value={this.state.todo.description} o
-            nKeyPress={e => {
+            value={this.state.todo.description}
+            onKeyPress={e => {
                 this._handleKeyPress(e);
               }} onChange={e => {
                 this._handelInputChange(e.target);

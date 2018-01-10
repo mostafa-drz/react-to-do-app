@@ -28,22 +28,13 @@ class EditToDo extends Component{
     }
     render(){
      const{description}=this.state.todo;
-        return(
-            <div className='editToDo'>
-                <input 
-                autoFocus="true"
-                className='editToDo__description' 
-                type="text" 
-                value={description} 
-                onChange={(e)=>this._handleInputChange(e.target)}/>
+        return <div className="editToDo">
+            <input autoFocus className="editToDo__description" type="text" value={description} onChange={e => this._handleInputChange(e.target)} />
 
-                <button 
-                className='editToDo__updateButton' 
-                type="button" 
-                onClick={this._handleUpdateButton}>
-                Submit</button>
-            </div>
-        );
+            <button className="editToDo__updateButton" type="button" onClick={this._handleUpdateButton}>
+              Submit
+            </button>
+          </div>;
     }
 }
 

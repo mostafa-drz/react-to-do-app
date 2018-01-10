@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import ToDOList from './ToDoList';
 import ToDoList from './ToDoList';
 import {fetchToDos} from '../actions/todo';
 import NewToDo from './NewToDo';

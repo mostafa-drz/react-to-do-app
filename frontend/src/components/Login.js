@@ -3,8 +3,8 @@ import '../stylesheets/login.css';
 import {connect} from 'react-redux';
 import {logInOnServer} from '../actions/auth';
 import MdErrorOutline from "react-icons/lib/md/error-outline";
-import {Link} from 'react-router-dom'
-import Signup from './Signup';
+import {Link} from 'react-router-dom';
+
 class Login extends Component{
     constructor(props){
         super(props);

@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchToDos} from '../actions/todo';
 import ToDo from './ToDo';
 import '../stylesheets/todolist.css'
 class ToDoList extends Component{

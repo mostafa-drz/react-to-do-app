@@ -17,8 +17,8 @@ class Signup extends Component{
             return false;
         }else{
             this.props.signUpOnServer({
-                email: this.state.email,
-                password: this.state.password
+                email,
+                password
             }).then(()=>{
                 console.log('done');
             }).catch((error)=>{

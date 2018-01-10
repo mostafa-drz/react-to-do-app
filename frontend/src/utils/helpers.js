@@ -19,7 +19,7 @@ const isUserAuthorized = () => {
 const responseErrorHandler = res => {
     if (res.status >= 500) {
         throw Error("Something went wrong on the server");
-    } else if (res.status == 401) {
+    } else if (res.status === 401) {
         throw Error("You are not authorized to complete this action");
     } else {
         throw Error(res.data.message || "Something went wrong :(");
