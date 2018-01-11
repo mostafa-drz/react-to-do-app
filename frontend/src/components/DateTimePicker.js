@@ -19,7 +19,7 @@ class DateTimePicker extends Component {
   }
 
   _clearDate() {
-    this.setState({ date: null });
+   this.props.onChange(null);
   }
 
   _renderDateTimeInput(props, openCalendar) {
@@ -53,7 +53,7 @@ class DateTimePicker extends Component {
         <Datetime
           renderInput={this._renderDateTimeInput}
           onChange={e => this._handleDateTimeChange(e)}
-          value={this.state.date}
+          value={this.props.value}
         />
       </div>
     );
