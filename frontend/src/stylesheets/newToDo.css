@@ -9,6 +9,12 @@
 .newtodo__calendarIcon {
     font-size: 40px;
     color: #757575;
+    position: relative;
+}
+
+svg.newtodo__calendarIcon {
+    position: absolute;
+    top: 20px;
 }
 
 .newtodo__calendarIcon:hover {

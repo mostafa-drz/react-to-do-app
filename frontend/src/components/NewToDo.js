@@ -46,8 +46,10 @@ class NewToDo extends Component {
                 this._handleKeyPress(e);
               }} onChange={e => {
                 this._handelInputChange(e.target);
-              }} />
-            <Datetime renderInput={this._renderInput} onChange={e =>this._handleDateTimeChange(e)} />
+              }} className="col s10" />
+            <div className="col s1">
+            <Datetime renderInput={this._renderInput} onChange={e => this._handleDateTimeChange(e)} />
+            </div>
           </div>;
     }
 }

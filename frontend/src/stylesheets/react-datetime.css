@@ -19,7 +19,8 @@
 }
 
 .rdtOpen .rdtPicker {
-    display: block;
+    display: inline-block;
+    right: 100%;
 }
 
 .rdtStatic .rdtPicker {
