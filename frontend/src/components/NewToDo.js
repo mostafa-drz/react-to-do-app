@@ -5,6 +5,7 @@ import '../stylesheets/newToDo.css';
 import Datetime from 'react-datetime'
 import '../stylesheets/react-datetime.css';
 import GoCalendar from 'react-icons/lib/go/calendar';
+import * as moment from 'moment';
 class NewToDo extends Component {
     constructor(props) {
         super(props);
@@ -41,14 +42,15 @@ class NewToDo extends Component {
         this.setState({  description: '',date:null });
     }
     render() {
-        return <div className="row newToDo">
-            <input type="text" placeholder="What else?..." id="newToDo__description" value={this.state.description} onKeyPress={e => {
+        return <div className="row newtodo">
+            <input type="text" placeholder="What else?..." id="newtodo__description" value={this.state.description} onKeyPress={e => {
                 this._handleKeyPress(e);
               }} onChange={e => {
                 this._handelInputChange(e.target);
-              }} className="col s10" />
-            <div className="col s1">
-            <Datetime renderInput={this._renderInput} onChange={e => this._handleDateTimeChange(e)} />
+              }}/>
+            <div className="newtodo__date">
+                <label>{this.state.date && moment(this.state.date).format('MMM D,ddd h:mm a')}</label>
+                <Datetime renderInput={this._renderInput} onChange={e => this._handleDateTimeChange(e)} />
             </div>
           </div>;
     }

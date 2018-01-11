@@ -1,23 +1,49 @@
-#newToDo__description {
+.newtodo {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+#newtodo__description {
     font-size: 40px;
     letter-spacing: .3px;
     color: #424242;
     padding: 6px;
     display: inline-block;
+    flex-basis: 70%;
 }
 
 .newtodo__calendarIcon {
     font-size: 40px;
     color: #757575;
-    position: relative;
+    /* position: relative; */
 }
 
 svg.newtodo__calendarIcon {
-    position: absolute;
-    top: 20px;
+    /* position: absolute;
+    top: 20px; */
+    margin-left: 20px;
 }
 
 .newtodo__calendarIcon:hover {
     cursor: pointer;
     color: #01579b;
+}
+
+.newtodo__date {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-bottom: 17px;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 670px) {
+    .newtodo {
+        flex-wrap: wrap;
+    }
+    svg.newtodo__calendarIcon {
+        float: right;
+    }
 }

@@ -6,7 +6,7 @@ class ToDoList extends Component{
     
     render(){
         const { todos } = this.props;
-        return <div className="todolist container">
+        return <div className="todolist">
               <ul className="todolist__list">
                 {todos.map(todo => <li key={todo._id}>
                     <ToDo todo={todo}/>

@@ -20,7 +20,6 @@
 
 .rdtOpen .rdtPicker {
     display: inline-block;
-    right: 100%;
 }
 
 .rdtStatic .rdtPicker {
@@ -243,4 +242,11 @@ td.rdtYear:hover {
     width: 100%;
     font-size: 1.2em;
     margin-top: 37px;
+}
+
+@media only screen and (min-width: 750px) {
+    .rdtOpen .rdtPicker {
+        display: inline-block;
+        right: 10px;
+    }
 }
