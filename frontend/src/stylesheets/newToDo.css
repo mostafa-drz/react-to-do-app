@@ -3,4 +3,15 @@
     letter-spacing: .3px;
     color: #424242;
     padding: 6px;
+    display: inline-block;
+}
+
+.newtodo__calendarIcon {
+    font-size: 40px;
+    color: #757575;
+}
+
+.newtodo__calendarIcon:hover {
+    cursor: pointer;
+    color: #01579b;
 }

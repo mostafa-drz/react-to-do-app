@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToDoOnServer } from '../actions/todo';
 import '../stylesheets/newToDo.css';
+import Datetime from 'react-datetime'
+import '../stylesheets/react-datetime.css';
+import GoCalendar from 'react-icons/lib/go/calendar';
 class NewToDo extends Component {
     constructor(props) {
         super(props);
-        this.state = { todo: { description: '', date: null } }
+        this.state = {  description: '', date: null }
     }
 
     _handelInputChange(target) {
-        this.setState({ todo: { description: target.value } });
+        this.setState({  description: target.value});
     }
 
     _handleKeyPress(e) {
@@ -18,20 +21,33 @@ class NewToDo extends Component {
         }
     }
 
+    _renderInput(props,openCalendar){
+        function clear(){
+            props.onChange({target:{value:''}});
+        }
+
+        return(
+                <GoCalendar onClick={openCalendar} className="newtodo__calendarIcon"/>
+        );
+
+    }
+
+    _handleDateTimeChange(e){
+        this.setState({date:e._d});
+    }
     async _addToDo() {
-        await this.props.addToDoOnServer(this.state.todo)
-        this.setState({ todo: { description: '' } });
+        const {description,date}=this.state;
+        await this.props.addToDoOnServer({description,date});
+        this.setState({  description: '',date:null });
     }
     render() {
-        return <div className="newToDo">
-            <input type="text" placeholder="What else?..." 
-            id="newToDo__description" 
-            value={this.state.todo.description}
-            onKeyPress={e => {
+        return <div className="row newToDo">
+            <input type="text" placeholder="What else?..." id="newToDo__description" value={this.state.description} onKeyPress={e => {
                 this._handleKeyPress(e);
               }} onChange={e => {
                 this._handelInputChange(e.target);
               }} />
+            <Datetime renderInput={this._renderInput} onChange={e =>this._handleDateTimeChange(e)} />
           </div>;
     }
 }
