@@ -1,0 +1,39 @@
+.dateTimePicker {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-bottom: 17px;
+    margin-left: 5px;
+}
+
+.dateTimePicker__clearDateBtn {
+    margin-left: 5px;
+    color: rgba(255, 0, 0, 0.241);
+    font-size: 16px;
+    transition: color .5s ease;
+}
+
+.dateTimePicker__clearDateBtn:hover {
+    color: rgba(255, 0, 0, 0.638);
+    cursor: pointer;
+    transition: color .5s ease;
+}
+
+.dateTimePicker__calendarIcon:hover {
+    cursor: pointer;
+    color: #01579b;
+    transition: color .5s ease;
+}
+
+svg.dateTimePicker__calendarIcon {
+    /* position: absolute;
+    top: 20px; */
+    margin-left: 10px;
+}
+
+.dateTimePicker__calendarIcon {
+    font-size: 40px;
+    color: #757575;
+    /* position: relative; */
+    transition: color .5s ease;
+}

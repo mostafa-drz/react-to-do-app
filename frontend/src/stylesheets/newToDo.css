@@ -14,51 +14,8 @@
     flex-basis: 70%;
 }
 
-.newtodo__calendarIcon {
-    font-size: 40px;
-    color: #757575;
-    /* position: relative; */
-    transition: color .5s ease;
-}
-
-svg.newtodo__calendarIcon {
-    /* position: absolute;
-    top: 20px; */
-    margin-left: 10px;
-}
-
-.newtodo__calendarIcon:hover {
-    cursor: pointer;
-    color: #01579b;
-    transition: color .5s ease;
-}
-
-.newtodo__date {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    padding-bottom: 17px;
-    margin-left: 5px;
-}
-
-.newtodo__clearDateBtn {
-    margin-left: 5px;
-    color: rgba(255, 0, 0, 0.241);
-    font-size: 16px;
-    transition: color .5s ease;
-}
-
-.newtodo__clearDateBtn:hover {
-    color: rgba(255, 0, 0, 0.638);
-    cursor: pointer;
-    transition: color .5s ease;
-}
-
 @media only screen and (max-width: 670px) {
     .newtodo {
         flex-wrap: wrap;
-    }
-    svg.newtodo__calendarIcon {
-        float: right;
     }
 }
