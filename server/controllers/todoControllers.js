@@ -2,7 +2,7 @@ const ToDo = require("../models/todo");
 
 
 const getUserToDos = (req, res, next) => {
-    ToDo.find({ _user: req.user.id, deleted: false })
+    ToDo.find({ _user: req.user.id, deleted: false }).sort({ date: 1, createdDate: 1 })
         .then(todos => {
             res.status(200).send({ todos });
         })
