@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import {updateToDoOnTheServer,deleteAToDoOnTheServer} from '../actions/todo';
+import {updateToDoOnTheServer,deleteAToDoOnTheServer} from '../../actions/todo';
 import {connect} from 'react-redux';
 import MdHighlightRemove from "react-icons/lib/md/highlight-remove";
 import MdEdit from "react-icons/lib/md/edit"
-import '../stylesheets/todo.css';
+import '../../stylesheets/todo.css';
 import EditToDo from './EditToDo';
 
 class ToDo extends Component {

@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {signUpOnServer} from '../actions/auth';
+import {signUpOnServer} from '../../actions/auth';
 import MdErrorOutline from "react-icons/lib/md/error-outline";
-import '../stylesheets/signup.css'
+import '../../stylesheets/signup.css'
 class Signup extends Component{
     constructor(props){
         super(props);

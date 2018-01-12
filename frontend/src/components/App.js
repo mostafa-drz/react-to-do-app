@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../stylesheets/app.css';
 import { BrowserRouter, Route } from "react-router-dom";
-import Login from './Login';
-import Signup from './Signup';
-import RequireAuth from '../components/require_authentication_hoc';
-import Dashboard from '../components/Dashboard';
-import Header from './Header';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
+import RequireAuth from './auth/require_authentication_hoc';
+import Dashboard from './Dashboard';
+import Header from './header/Header';
 class App extends Component {
   render() {
     return( 

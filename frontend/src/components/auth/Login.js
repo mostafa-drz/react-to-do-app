@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import '../stylesheets/login.css';
+import '../../stylesheets/login.css';
 import {connect} from 'react-redux';
-import {logInOnServer} from '../actions/auth';
+import {logInOnServer} from '../../actions/auth';
 import MdErrorOutline from "react-icons/lib/md/error-outline";
 import {Link} from 'react-router-dom';
 

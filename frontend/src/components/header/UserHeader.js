@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import {removeTokenOnStorage} from '../utils/helpers'
+import {removeTokenOnStorage} from '../../utils/helpers'
 import {Link} from 'react-router-dom';
 import FaAlignJustify from 'react-icons/lib/fa/align-justify';
-import "../stylesheets/header.css";
+import "../../stylesheets/header.css";
 class UserHeader extends Component {
   constructor(props) {
     super(props);

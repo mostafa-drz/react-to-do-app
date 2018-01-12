@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToDoOnServer } from '../actions/todo';
-import '../stylesheets/newToDo.css';
-import DateTimePicker from './DateTimePicker';
+import { addToDoOnServer } from '../../actions/todo';
+import '../../stylesheets/newToDo.css';
+import DateTimePicker from '../DateTimePicker';
 
 class NewToDo extends Component {
 

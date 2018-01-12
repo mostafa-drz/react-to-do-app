@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import ToDoList from './ToDoList';
+import ToDoList from './toDo/ToDoList';
 import {fetchToDos} from '../actions/todo';
-import NewToDo from './NewToDo';
+import NewToDo from './toDo/NewToDo';
 import '../stylesheets/dashboard.css';
 class Dashboard extends Component {
   componentDidMount() {

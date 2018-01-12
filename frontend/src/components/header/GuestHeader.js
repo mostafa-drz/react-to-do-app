@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import FaAlignJustify from "react-icons/lib/fa/align-justify";
-import '../stylesheets/header.css';
+import '../../stylesheets/header.css';
 class GuestHeader extends Component {
   render() {
     return( 
