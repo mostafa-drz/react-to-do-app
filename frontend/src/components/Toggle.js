@@ -29,17 +29,19 @@ class Toggle extends Component {
   render() {
     return (
       <div className="toggle">
-        <label className="toggle__status">
-          {this.state.checked ? this.state.onLabel : this.state.offLabel}
-        </label>
-        <label className="toggle__switch">
-          <input
-            type="checkbox"
-            checked={this.state.checked}
-            onChange={this._handleToggle}
-          />
-          <span className="toggle__slider toggle__round" />
-        </label>
+        <div className="wrapper">
+            <label className="toggle__status" style={{width:this.props.width || '200px'}}>
+            {this.state.checked ? this.state.onLabel : this.state.offLabel}
+            </label>
+            <label className="toggle__switch">
+            <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this._handleToggle}
+            />
+            <span className="toggle__slider toggle__round" />
+            </label>
+        </div>
       </div>
     );
   }

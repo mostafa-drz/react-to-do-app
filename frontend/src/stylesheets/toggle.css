@@ -1,4 +1,11 @@
 .toggle {
+    display: inline-block;
+    margin: 10px;
+    margin-left: 20px;
+    backface-visibility: hidden;
+}
+
+.toggle__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,13 +71,7 @@ input:checked+.toggle__slider:before {
     border-radius: 50%;
 }
 
-.toggle__label {
-    font-size: 12px;
-    vertical-align: 10px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
-
 .toggle__status {
     display: block;
+    width: 200px;
 }

@@ -12,13 +12,12 @@ class Dashboard extends Component {
     });
   }
   render() {
-    return (
-      <div className="container body dashboard">
-         <Toggle/>
-         <NewToDo/>
-        <ToDoList/>
-      </div>
-    );
+    return <div className="container body dashboard">
+        <Toggle defaultChecked={true} onLabel="Show only not completed" offLabel="Show all"/>
+        <Toggle defaultChecked={true} onLabel="Show only not completed" offLabel="Show all" />
+        <NewToDo />
+        <ToDoList />
+      </div>;
   }
 }
 
