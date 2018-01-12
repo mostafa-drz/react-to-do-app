@@ -10,6 +10,10 @@ const todoSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    createdDate: {
+        type: Date,
+        default: new Date()
+    },
     _user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User',
