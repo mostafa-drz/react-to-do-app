@@ -69,16 +69,14 @@ const googleLogin = new GoogleStrategy({
         proxy: true
     },
     async(accessToken, refreshToken, profile, done) => {
-
         try {
-            const existingUser = User.findOne({ googldId: profile.id });
+            const existingUser = await User.findOne({ googleId: profile.id });
             if (existingUser) {
                 return done(null, existingUser);
             }
-            const user = await new User({ googleId: profile.id }).save();
+            const user = await new User({ googleId: profile.id, email: profile.emails[0].value }).save();
             done(null, user);
         } catch (error) {
-            console.log(error);
             return Promise.reject(error);
         }
     }

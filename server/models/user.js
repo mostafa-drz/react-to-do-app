@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+    },
+    googleId: {
+        type: String,
+        default: null
     }
 });
 
@@ -23,21 +26,24 @@ const userSchema = new mongoose.Schema({
 //hash the password with salt before saving the user
 userSchema.pre('save', function(next) {
     const user = this;
-
-    bcrypt.genSalt(10, function(error, salt) {
-        if (error) {
-            return next(error);
-        }
-
-        bcrypt.hash(user.password, salt, null, function(error, hash) {
+    if (!user.googleId) {
+        bcrypt.genSalt(10, function(error, salt) {
             if (error) {
                 return next(error);
             }
 
-            user.password = hash;
-            next();
+            bcrypt.hash(user.password, salt, null, function(error, hash) {
+                if (error) {
+                    return next(error);
+                }
+
+                user.password = hash;
+                next();
+            });
         });
-    });
+    } else {
+        next();
+    }
 });
 
 userSchema.methods.comparePassword = function(enteredPassword, callback) {
