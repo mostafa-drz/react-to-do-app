@@ -13,4 +13,15 @@ router.post('/api/login', requireLogIn, login);
 
 router.post('/api/signup', signup);
 
+router.get("/auth/google", passport.authenticate("google", {
+    scope: ["profile", "email"]
+}));
+
+app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+        res.redirect("/api/dashboard");
+    }
+);
 module.exports = router;
