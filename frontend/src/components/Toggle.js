@@ -29,7 +29,6 @@ class Toggle extends Component {
   render() {
     return (
       <div className="toggle">
-        <div className="wrapper">
             <label className="toggle__status" style={{width:this.props.width || '200px'}}>
             {this.state.checked ? this.state.onLabel : this.state.offLabel}
             </label>
@@ -41,7 +40,6 @@ class Toggle extends Component {
             />
             <span className="toggle__slider toggle__round" />
             </label>
-        </div>
       </div>
     );
   }

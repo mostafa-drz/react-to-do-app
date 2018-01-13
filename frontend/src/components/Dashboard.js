@@ -13,7 +13,7 @@ class Dashboard extends Component {
   }
   render() {
     return <div className="container body dashboard">
-        <Toggle defaultChecked={true} onLabel="Show only not completed" offLabel="Show all"/>
+        <Toggle defaultChecked={true} onLabel="Show only not completed" offLabel="Show all" width="auto"/>
         <Toggle defaultChecked={true} onLabel="Show only not completed" offLabel="Show all" />
         <NewToDo />
         <ToDoList />

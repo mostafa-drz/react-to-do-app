@@ -5,12 +5,6 @@
     backface-visibility: hidden;
 }
 
-.toggle__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .toggle__switch {
     position: relative;
     display: inline-block;
@@ -29,7 +23,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: rgb(213, 212, 212);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -41,7 +35,7 @@
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #fafafa;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -73,5 +67,4 @@ input:checked+.toggle__slider:before {
 
 .toggle__status {
     display: block;
-    width: 200px;
 }
