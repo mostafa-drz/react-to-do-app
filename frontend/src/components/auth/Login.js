@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../../stylesheets/login.css';
 import {connect} from 'react-redux';
-import { logInOnServer, googleLogInOnTheServer } from "../../actions/auth";
+import { logInOnServer,googleLogInOnTheServer } from "../../actions/auth";
 import MdErrorOutline from "react-icons/lib/md/error-outline";
 import {Link} from 'react-router-dom';
 
@@ -12,6 +12,7 @@ class Login extends Component{
         this._handleEmailInputChange = this._handleEmailInputChange.bind(this);
         this._handlePasswordInputChange = this._handlePasswordInputChange.bind(this);
         this.login=this.login.bind(this);
+        this.googleLogin=this.googleLogin.bind(this);
     }
 
    _handleEmailInputChange(target){
@@ -60,4 +61,4 @@ class Login extends Component{
     }
 }
 
-export default connect(null,{logInOnServer})(Login);
+export default connect(null,{logInOnServer,googleLogInOnTheServer})(Login);
