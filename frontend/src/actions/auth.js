@@ -57,10 +57,13 @@ export const signUpOnServer = ({ email, password }) => {
     }
 }
 
-export const googleLogInOnTheServer = () => {
+export const googleLogInOnTheServer = ({ token }) => {
     return async dispatch => {
         try {
-            const res = await axios.get("/api/auth/google", {
+            const res = await axios.get("/api/auth/googleLogin", {
+                headers: {
+                    googleToken: token
+                },
                 validateStatus: function(status) {
                     return status < 500; // Reject only if the status code is greater than or equal to 500
                 }

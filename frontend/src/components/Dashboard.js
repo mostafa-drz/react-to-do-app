@@ -4,6 +4,7 @@ import ToDoList from './toDo/ToDoList';
 import {fetchToDos} from '../actions/todo';
 import NewToDo from './toDo/NewToDo';
 import '../stylesheets/dashboard.css';
+
 class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchToDos().catch((error)=>{
