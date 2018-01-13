@@ -1,6 +1,6 @@
 const passportService = require('../services/passport');
 const { signup, login } = require('../controllers/authControllers');
-const { requireAuth, requireLogIn } = require('../middlewares/auth');
+const { requireAuth, requireLogIn, requireGoogleAuth, requireGoogleLogIn } = require('../middlewares/auth');
 
 const express = require('express');
 const router = express.Router();
@@ -13,15 +13,9 @@ router.post('/api/login', requireLogIn, login);
 
 router.post('/api/signup', signup);
 
-router.get("/auth/google", passport.authenticate("google", {
-    scope: ["profile", "email"]
-}));
+router.get("api//auth/google", requireGoogleAuth);
 
-app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
-    (req, res) => {
-        res.redirect("/api/dashboard");
-    }
-);
+router.get("auth/google/callback", requireGoogleLogIn, (req, res) => {
+    res.redirect("/api/dashboard");
+});
 module.exports = router;

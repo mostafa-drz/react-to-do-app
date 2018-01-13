@@ -56,3 +56,23 @@ export const signUpOnServer = ({ email, password }) => {
         }
     }
 }
+
+export const googleLogInOnTheServer = () => {
+    return async dispatch => {
+        try {
+            const res = await axios.get("/api/auth/google", {
+                validateStatus: function(status) {
+                    return status < 500; // Reject only if the status code is greater than or equal to 500
+                }
+            });
+            if (res.status === 200) {
+                dispatch({ type: AUTH, auth: true });
+                setTheTokenOnStorage(res.data.token);
+                return Promise.resolve();
+            }
+            responseErrorHandler(res);
+        } catch (error) {
+            return Promise.reject(error.message);
+        }
+    };
+};

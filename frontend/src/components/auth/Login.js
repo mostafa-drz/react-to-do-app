@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../../stylesheets/login.css';
 import {connect} from 'react-redux';
-import {logInOnServer} from '../../actions/auth';
+import { logInOnServer, googleLogInOnTheServer } from "../../actions/auth";
 import MdErrorOutline from "react-icons/lib/md/error-outline";
 import {Link} from 'react-router-dom';
 
@@ -33,6 +33,16 @@ class Login extends Component{
             this.setState({error:error.message});
         });
    }
+
+   googleLogin(){
+       this.props.googleLogInOnTheServer()
+       .then(()=>{
+           this.props.history.push('/dashboard');
+       })
+       .catch((error)=>{
+            this.setState({error:error.message});
+       });
+   }
     render(){
      return(
             <div className="container login">
@@ -42,6 +52,7 @@ class Login extends Component{
                 <button type="button" className="btn" id="login__btn" onClick={this.login}>
                 Sign In
                 </button>
+                <button className="btn" type="button" onClick={this.googleLogin}>Google</button>
                 <Link to='/signup' className="login__signup">
                 Not a Member?
                 </Link>
