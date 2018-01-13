@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const { tokenGenrator } = require('../utils/helper');
 const login = (req, res, next) => {
-    res.send({ token: tokenGenrator(req.user) });
+    res.status(200).send({ token: tokenGenrator(req.user) });
 };
 
 const signup = (req, res, next) => {

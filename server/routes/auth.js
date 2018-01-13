@@ -13,9 +13,7 @@ router.post('/api/login', requireLogIn, login);
 
 router.post('/api/signup', signup);
 
-router.get("api//auth/google", requireGoogleAuth);
+router.get("/api/auth/google", requireGoogleAuth);
 
-router.get("auth/google/callback", requireGoogleLogIn, (req, res) => {
-    res.redirect("/api/dashboard");
-});
+router.get("/api/auth/google/callback", requireGoogleLogIn, login);
 module.exports = router;

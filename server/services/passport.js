@@ -6,6 +6,18 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+
+//passport serialize deserialize user
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then(user => {
+        done(null, user);
+    });
+});
+
 //Passport local staretegy for sign in
 const localStrategyOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localStrategyOptions, (email, password, done) => {
@@ -53,8 +65,7 @@ const JwtLogin = new JwtStrategy(JwtStrategyOptions, (payload, done) => {
 const googleLogin = new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: '/auth/google/calback',
-        proxy: true
+        callbackURL: '/api/auth/google/callback',
     },
     async(accessToken, refreshToken, profile, done) => {
 
@@ -66,7 +77,8 @@ const googleLogin = new GoogleStrategy({
             const user = await new User({ googleId: profile.id }).save();
             done(null, user);
         } catch (error) {
-            reject(error);
+            console.log(error);
+            return Promise.reject(error);
         }
     }
 )
