@@ -1,5 +1,5 @@
 const ToDo = require("../models/todo");
-
+const moment = require('moment');
 
 const getUserToDos = (req, res, next) => {
     ToDo.find({ _user: req.user.id, deleted: false }).sort({ date: 1, createdDate: 1 })
@@ -9,6 +9,21 @@ const getUserToDos = (req, res, next) => {
         .catch(error => {
             res.status(500).send({ message: "Internal server error happened" });
         });
+}
+
+const getADayToDos = async(req, res, next) => {
+    try {
+        let { date } = req.body;
+        date = date || new Date();
+        const day = moment(date).startOf('day');
+        const dayPlusOne = moment(day).add(1, 'days');
+
+        const todos = await ToDo.find({ _user: req.user.id, deleted: false, date: { $gte: day.toDate(), $lt: dayPlusOne.toDate() } })
+            .sort({ date: 1, createdDate: 1 });
+        res.status(200).send({ todos });
+    } catch (error) {
+        res.status(500).send({ message: 'Internal server error' });
+    }
 }
 
 const addToDo = (req, res, next) => {
@@ -92,4 +107,4 @@ const deleteAToDo = (req, res, next) => {
             res.status(500).send({ message: "Internal error happened" });
         });
 }
-module.exports = { getUserToDos, addToDo, upddateAToDo, deleteAToDo };
+module.exports = { getUserToDos, addToDo, upddateAToDo, deleteAToDo, getADayToDos };
