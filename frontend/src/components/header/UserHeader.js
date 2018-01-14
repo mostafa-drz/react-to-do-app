@@ -15,7 +15,6 @@ class UserHeader extends Component {
   }
   render() {
     return( 
-    <div className="navbar-fixed">
         <nav className="header">
             <div className="nav-wrapper">
             <a to="/" className="brand-logo">
@@ -42,7 +41,6 @@ class UserHeader extends Component {
             </ul>
             </div>
         </nav>
-      </div>
     )
   }
 }

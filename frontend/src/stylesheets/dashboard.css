@@ -1,11 +1,8 @@
 .dashboard {
     height: 100vh;
     box-sizing: border-box;
-    padding-top: 10%;
 }
 
-.body {
-    background: #e3f2fd;
-    backface-visibility: hidden;
-    box-sizing: border-box;
+#dashboard__viewSelect {
+    display: inline-block;
 }

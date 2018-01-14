@@ -5,8 +5,7 @@ import '../../stylesheets/header.css';
 class GuestHeader extends Component {
   render() {
     return( 
-        <div className="navbar-fixed">
-            <nav className="header navbar-fixed">
+            <nav className="header">
                 <div className="nav-wrapper">
                 <a to="/" className="brand-logo">
                     Do
@@ -42,7 +41,6 @@ class GuestHeader extends Component {
                 </ul>
                 </div>
             </nav>
-      </div>
     )
   }
 }
