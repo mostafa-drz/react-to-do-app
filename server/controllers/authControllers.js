@@ -38,4 +38,20 @@ const signup = (req, res, next) => {
         });
 };
 
-module.exports = { login, signup };
+const googleLogin = async(req, res, next) => {
+    const user = await User.findOne({ "tokens.google": req.headers.googletoken });
+    if (user) {
+        user.tokens.google = null;
+        await user.save();
+        return res.status(200).send({ token: tokenGenrator(user) });
+    }
+    return res.status(401).send({ message: `You don't have permission` });
+};
+
+const googleAuthCallback = async(req, res) => {
+    const token = tokenGenrator(req.user);
+    const user = await User.findOneAndUpdate({ googleId: req.user.googleId }, { "tokens.google": token });
+    res.redirect(`/auth/google/callback?token=${token}`);
+};
+
+module.exports = { login, signup, googleLogin, googleAuthCallback };
