@@ -14,7 +14,7 @@ class GoogleLogIn extends Component {
     }
     render() {
         return (
-            <div>{'Loading'}</div>
+            <div>{'Transfering..'}</div>
         )
     }
 }

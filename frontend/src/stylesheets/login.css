@@ -23,12 +23,18 @@
 .login__signup {
     color: #00897b;
     font-size: 15px;
+    margin-top: 20px;
 }
 
 .login__signup:hover {
+    /* border-bottom: 1px solid #004d40;
+    margin-top: 10px;*/
+    transition: all .3s ease;
     border-bottom: 1px solid #004d40;
-    margin-top: 10px;
-    transition: all .5s ease-in-out;
+}
+
+.login__google {
+    width: 30%;
 }
 
 .login__error {
