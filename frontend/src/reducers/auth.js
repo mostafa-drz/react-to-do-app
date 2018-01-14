@@ -1,6 +1,6 @@
 import { AUTH, LOG_OUT } from '../actions/types';
 
-export default function(state = null, action) {
+export default function authReducer(state = null, action) {
     switch (action.type) {
         case AUTH:
             return { authenticated: action.auth };

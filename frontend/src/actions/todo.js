@@ -29,6 +29,7 @@ export function deleteAToDo({ _id }) {
     }
 }
 
+
 export const addToDoOnServer = (todo) => {
     return async dispatch => {
         try {
