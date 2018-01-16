@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { googleLogInOnTheServer } from '../actions/auth';
+import { googleLogInOnTheServer } from '../../actions/auth';
 import { connect } from 'react-redux';
 import {parse} from 'query-string';
 class GoogleLogIn extends Component {

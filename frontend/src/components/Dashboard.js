@@ -1,13 +1,11 @@
 import React,{Component} from 'react';
-import {connect} from 'react-redux';
 import ToDoList from './toDo/ToDoList';
 import NewToDo from './toDo/NewToDo';
 import '../stylesheets/dashboard.css';
-import Toggle from './Toggle';
-import CalendarView from './CalendarView';
+import CalendarView from './toDo/CalendarView';
 import MdFormatListBulleted from 'react-icons/lib/md/format-list-bulleted';
 import TiCalendarOutline from 'react-icons/lib/ti/calendar-outline';
-import RadioButton from './RadioButton';
+import RadioButton from './tools/RadioButton';
 class Dashboard extends Component {
   constructor(props){
     super(props);
@@ -24,6 +22,8 @@ class Dashboard extends Component {
          return <ToDoList key='todolist'/>;
       case 'calendar':
         return <CalendarView key='calendar'/>
+      default:
+        return <ToDoList key='todolist' />;
     }
   }
 

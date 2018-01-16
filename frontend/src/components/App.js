@@ -6,7 +6,7 @@ import Signup from './auth/Signup';
 import RequireAuth from './auth/require_authentication_hoc';
 import Dashboard from './Dashboard';
 import Header from './header/Header';
-import GoogleLogIn from './GoogleLogIn';
+import GoogleLogIn from './auth/GoogleLogIn';
 class App extends Component {
   render() {
     return( 

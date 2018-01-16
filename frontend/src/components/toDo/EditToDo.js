@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { connect } from "react-redux";
 import {updateToDoOnTheServer} from '../../actions/todo';
 import '../../stylesheets/editToDo.css';
-import DateTimePicker from '../DateTimePicker';
+import DateTimePicker from '../tools/DateTimePicker';
 
 class EditToDo extends Component{
     constructor(props){

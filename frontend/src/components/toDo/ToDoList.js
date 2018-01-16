@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import ToDo from './ToDo';
 import '../../stylesheets/todolist.css';
-import Toggle from '../Toggle';
+import Toggle from '../tools/Toggle';
 import {fetchToDos} from '../../actions/todo';
 class ToDoList extends Component{
     constructor(props){

@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {isTheSameDay} from '../utils/helpers';
-import ToDo from './toDo/ToDo';
-import '../stylesheets/dayView.css';
+import {isTheSameDay} from '../../utils/helpers';
+import ToDo from './ToDo';
+import '../../stylesheets/dayView.css';
 class DayView extends Component{
    
     render(){

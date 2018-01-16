@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Datetime from "react-datetime";
-import "../stylesheets/react-datetime.css";
+import "../../stylesheets/react-datetime.css";
 import GoCalendar from "react-icons/lib/go/calendar";
 import * as moment from "moment";
-import '../stylesheets/dateTimePicker.css';
+import '../../stylesheets/dateTimePicker.css';
 
 class DateTimePicker extends Component {
   constructor(props) {
@@ -23,10 +23,6 @@ class DateTimePicker extends Component {
   }
 
   _renderDateTimeInput(props, openCalendar) {
-    function clear() {
-      props.onChange({ target: { value: "" } });
-    }
-    
     return (
       <div>
         <GoCalendar

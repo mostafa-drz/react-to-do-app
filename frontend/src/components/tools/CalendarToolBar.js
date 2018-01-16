@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MdNavigateNext from 'react-icons/lib/md/navigate-next';
 import MdNavigateBefore from 'react-icons/lib/md/navigate-before';
-import { startOfDay, nextDay, previousDay } from '../utils/helpers';
+import {nextDay, previousDay } from '../../utils/helpers';
 import moment from 'moment';
 class CalendarToolBar extends Component {
 
@@ -10,7 +10,7 @@ class CalendarToolBar extends Component {
         super(props);
         this.nextDay=this.nextDay.bind(this);
         this.previousDay=this.previousDay.bind(this);
-        
+
     }
     nextDay() {
         const { date } = this.props;

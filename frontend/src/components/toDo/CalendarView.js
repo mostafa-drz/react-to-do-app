@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import DayView from './DayView';
-
-import {startOfDay} from '../utils/helpers';
-import moment from 'moment';
-import '../stylesheets/calendarView.css'
-import CalendarToolBar from './CalendarToolBar';
+import {startOfDay} from '../../utils/helpers';
+import '../../stylesheets/calendarView.css'
+import CalendarToolBar from '../tools/CalendarToolBar';
 
 class CalendarView extends Component {
-
-    constructor(props) {
-        super(props);
-
-    }
-
     state = {
         date:startOfDay(new Date())
     }

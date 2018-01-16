@@ -1,5 +1,5 @@
-import { ADD_TO_DO, GET_TO_DOS, UPDATE_TO_DO, DELETE_A_TO_DO, GET_A_DAY_TO_DOS } from '../actions/types';
-import { isTheSameDay } from '../utils/helpers';
+import { ADD_TO_DO, GET_TO_DOS, UPDATE_TO_DO, DELETE_A_TO_DO } from '../actions/types';
+
 export default function todoReducer(state = [], action) {
     switch (action.type) {
 
