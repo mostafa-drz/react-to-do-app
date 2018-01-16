@@ -15,6 +15,7 @@ class ToDoList extends Component{
     }
 
      componentDidMount() {
+         console.log('Mounting');
     this.props.fetchToDos().catch((error)=>{
       console.log(error.message);
     });
@@ -39,7 +40,7 @@ class ToDoList extends Component{
             />
             <ul className="todolist__list">
               {todos.map(todo => <li key={todo._id} hidden={this.state.showAll?false : todo.completed}>
-                  <ToDo todo={todo} />
+                  <ToDo todo={todo} className='todo'/>
                 </li>)}
             </ul>
           </div>;
@@ -47,6 +48,7 @@ class ToDoList extends Component{
 }
 
 function mapStateToProps(state){
+    console.log(state);
     return{
         todos:state.todo
     }

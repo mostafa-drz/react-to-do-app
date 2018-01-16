@@ -1,0 +1,101 @@
+.dayView {
+    background-color: antiquewhite;
+    padding: 5% 3%;
+    width: 70%;
+}
+
+.day {
+    padding: 10px;
+    background-color: #fafafa;
+    margin-top: 2%;
+    padding: 20px;
+    -webkit-box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    transition: box-shadow .5s ease-out;
+}
+
+.day:hover {
+    opacity: .8;
+}
+
+.day:active {
+    -webkit-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px -2px 11px -4px rgba(0, 0, 0, 0.75);
+    transition: box-shadow .5s ease-out;
+}
+
+.day__date {
+    font-size: 10px;
+    color: gray;
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.day__description {
+    font-size: 16px;
+    color: #01579b;
+    display: inline-block;
+}
+
+.day--completed {
+    font-style: italic;
+    background-color: rgba(128, 128, 128, 0.165);
+}
+
+.day--completed .day__description {
+    text-decoration: line-through;
+}
+
+.day__deleteIcon {
+    display: inline-block;
+    color: rgba(255, 0, 0, 0.309);
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.day__deleteIcon:hover {
+    color: rgb(255, 0, 0);
+    transition: color .3s ease;
+}
+
+.day__editIcon {
+    display: inline-block;
+    color: rgba(255, 166, 0, 0.508);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.day__editIcon:hover {
+    color: rgb(255, 145, 0);
+    transition: color .3s ease;
+}
+
+
+/* dateTools */
+
+.dayView__dateTools {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dayView__dateTools__previousIcon,
+.dayView__dateTools__nextIcon {
+    cursor: pointer;
+    font-size: 50px;
+}
+
+.dayView__dateTools__previousIcon:hover,
+.dayView__dateTools__nextIcon:hover {
+    transform: scale(1.2, 1.2);
+    color: gray;
+}
+
+.dayView__dateTools__currentDate {
+    color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

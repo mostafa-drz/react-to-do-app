@@ -4,7 +4,7 @@ import ToDoList from './toDo/ToDoList';
 import NewToDo from './toDo/NewToDo';
 import '../stylesheets/dashboard.css';
 import Toggle from './Toggle';
-import Day from './Day';
+import DayView from './DayView';
 import MdFormatListBulleted from 'react-icons/lib/md/format-list-bulleted';
 import TiCalendarOutline from 'react-icons/lib/ti/calendar-outline';
 import RadioButton from './RadioButton';
@@ -23,7 +23,7 @@ class Dashboard extends Component {
       case 'list':
          return <ToDoList key='todolist'/>;
       case 'calendar':
-        return <Day key='day'/>
+        return <DayView key='day'/>
     }
   }
 

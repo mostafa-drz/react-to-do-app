@@ -46,17 +46,20 @@ class ToDo extends Component {
     render() {
       const {completed,date,description}=this.props.todo;
       const {editMode}=this.state;
-        return !editMode ? (<div className={completed ? "todo todo--completed" : "todo"} onClick={this._handleToDoClick}>
-            <p className="right todo__date">
+        return !editMode ? (<div 
+            className={completed ? `${this.props.className} ${this.props.className}--completed` : `${this.props.className}`} 
+            onClick={this._handleToDoClick}>
+            
+            <p className={`right ${this.props.className}__date`}>
               {date && moment(date).format("dddd D MMM HH:mm")}
             </p>
-            <span className="todo__deleteIcon" onClick={e => this._handleDeleteButton(e)}>
+            <span className={`${this.props.className}__deleteIcon`} onClick={e => this._handleDeleteButton(e)}>
               <MdHighlightRemove />
             </span>
-            <span className="todo__editIcon" onClick={e=>this._handleEditButton(e)}>
+            <span className={`${this.props.className}__editIcon`} onClick={e=>this._handleEditButton(e)}>
               <MdEdit />
             </span>
-            <p className="todo__description">{description}</p>
+            <p className={`${this.props.className}__description`}>{description}</p>
           </div>)
         :
         (<EditToDo todo={this.props.todo} onEditDone={this._editDone}/>)

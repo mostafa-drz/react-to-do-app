@@ -45,6 +45,26 @@ const isTheSameDay = (date, intendedDay) => {
     return (new Date(date).getTime() >= startOfDay && new Date(date).getTime() <= endOfDay);
 }
 
+const nextDay = (date) => {
+    const next = new Date(date);
+    next.setDate(next.getDate() + 1);
+    next.setHours(0, 0, 0);
+    return next;
+}
+
+const previousDay = (date) => {
+    const previous = new Date(date);
+    previous.setDate(previous.getDate() - 1);
+    previous.setHours(0, 0, 0);
+    return previous;
+}
+
+const startOfDay = (date) => {
+    const day = new Date(date);
+    day.setHours(0, 0, 0);
+    return day;
+}
+
 export {
     setTheTokenOnStorage,
     getTheTokenOnStorage,
@@ -53,4 +73,7 @@ export {
     getRequestConfig,
     removeTokenOnStorage,
     isTheSameDay,
+    previousDay,
+    nextDay,
+    startOfDay
 };
