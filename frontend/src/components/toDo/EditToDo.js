@@ -19,7 +19,9 @@ class EditToDo extends Component{
     }
 
     _handleInputChange(target){
-        this.setState({todo:{description:target.value}});
+        console.log('trying to handle input change');
+        console.log(target.value);
+        this.setState({description:target.value});
     }
 
     _handleUpdateButton(){
