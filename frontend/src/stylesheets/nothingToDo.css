@@ -1,0 +1,12 @@
+.nothingToDo {
+    display: flex;
+    justify-content: center;
+    padding: 7%;
+    margin-top: 3%;
+    background-color: #bbdefb;
+}
+
+.nothingToDo__description {
+    color: #424242;
+    font-size: 27px;
+}

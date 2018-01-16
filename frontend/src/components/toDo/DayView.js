@@ -3,11 +3,13 @@ import {connect} from 'react-redux';
 import {isTheSameDay} from '../../utils/helpers';
 import ToDo from './ToDo';
 import '../../stylesheets/dayView.css';
+import NothingToDo from './NothingToDo';
 class DayView extends Component{
    
     render(){
         const {todos}=this.props;
-        return(<div className='dayView'>
+        return(todos.length>0 ? 
+        <div className='dayView'>
             {todos.map((todo)=>(
             <ToDo 
             todo={todo} 
@@ -17,7 +19,8 @@ class DayView extends Component{
             {this.props.children}
             </ToDo>
         ))}
-        </div>);
+        </div>
+    :<NothingToDo/>) 
     }
 }
 

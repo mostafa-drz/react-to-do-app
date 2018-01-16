@@ -1,5 +1,8 @@
 .dayView {
     padding: 5% 3%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .day {
