@@ -17,8 +17,6 @@ export default function todoReducer(state = [], action) {
         case GET_TO_DOS:
             return action.todos;
 
-        case GET_A_DAY_TO_DOS:
-            return state.filter((todo) => (isTheSameDay(todo.date, action.date)))
         case UPDATE_TO_DO:
             return state.reduce((accu, current) => {
                 if (current._id !== action.update._id) {

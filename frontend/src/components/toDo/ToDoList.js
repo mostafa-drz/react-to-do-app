@@ -15,7 +15,6 @@ class ToDoList extends Component{
     }
 
      componentDidMount() {
-         console.log('Mounting');
     this.props.fetchToDos().catch((error)=>{
       console.log(error.message);
     });
@@ -48,7 +47,6 @@ class ToDoList extends Component{
 }
 
 function mapStateToProps(state){
-    console.log(state);
     return{
         todos:state.todo
     }

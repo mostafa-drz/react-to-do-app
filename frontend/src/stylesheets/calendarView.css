@@ -1,0 +1,25 @@
+/* dateTools */
+
+.calendarView__dateTools {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendarView__dateTools__previousIcon,
+.calendarView__dateTools__nextIcon {
+    cursor: pointer;
+    font-size: 50px;
+}
+
+.calendarView__dateTools__previousIcon:hover,
+.calendarView__dateTools__nextIcon:hover {
+    transform: scale(1.2, 1.2);
+    color: gray;
+}
+
+.calendarView__dateTools__currentDate {
+    color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
