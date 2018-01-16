@@ -3,6 +3,8 @@ import MdNavigateNext from 'react-icons/lib/md/navigate-next';
 import MdNavigateBefore from 'react-icons/lib/md/navigate-before';
 import {nextDay, previousDay } from '../../utils/helpers';
 import moment from 'moment';
+import Datetime from "react-datetime";
+import '../../stylesheets/calendarToolbar.css'
 class CalendarToolBar extends Component {
 
 
@@ -10,6 +12,8 @@ class CalendarToolBar extends Component {
         super(props);
         this.nextDay=this.nextDay.bind(this);
         this.previousDay=this.previousDay.bind(this);
+        this._renderDateTimeInput=this._renderDateTimeInput.bind(this);
+        this.onDateSelect=this.onDateSelect.bind(this);
 
     }
     nextDay() {
@@ -22,12 +26,29 @@ class CalendarToolBar extends Component {
         this.props.onDateChange({date:previousDay(date)});
     }
 
+    onDateSelect(e){
+        this.props.onDateChange({date:e._d});
+    }
+    _renderDateTimeInput(props, openCalendar) {
+        return (
+            <div>
+                <button type="button" className='calendarToolbar__currentDate' onClick={openCalendar}>{moment(this.props.date).format("dddd D MMM")}</button>
+            </div>
+        );
+    }
+
     render() {
         return (
-            <div className="calendarView__dateTools">
-                    <MdNavigateBefore className="calendarView__dateTools__previousIcon" onClick={this.previousDay} />
-                    <span className='calendarView__dateTools__currentDate'>{moment(this.props.date).format("dddd D MMM")}</span>
-                    <MdNavigateNext className="calendarView__dateTools__nextIcon" onClick={this.nextDay} />
+            <div className="calendarToolbar">
+                    <MdNavigateBefore className="calendarToolbar__previousIcon" onClick={this.previousDay} />
+                    <Datetime
+                        renderInput={this._renderDateTimeInput}
+                        onChange={e => this.onDateSelect(e)}
+                        value={this.props.date}
+                        timeFormat={false}
+                        closeOnSelect={true}
+                    />
+                    <MdNavigateNext className="calendarToolbar__nextIcon" onClick={this.nextDay} />
         </div>
         );
     }
