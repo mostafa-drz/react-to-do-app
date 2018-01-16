@@ -1,7 +1,8 @@
-import { ADD_TO_DO, GET_TO_DOS, UPDATE_TO_DO, DELETE_A_TO_DO } from '../actions/types';
-
+import { ADD_TO_DO, GET_TO_DOS, UPDATE_TO_DO, DELETE_A_TO_DO, GET_A_DAY_TO_DOS } from '../actions/types';
+import { isTheSameDay } from '../utils/helpers';
 export default function todoReducer(state = [], action) {
     switch (action.type) {
+
         case ADD_TO_DO:
             return state.concat(action.todo).sort((a, b) => {
                 if (!a.date) {
@@ -12,8 +13,12 @@ export default function todoReducer(state = [], action) {
                 }
                 return 1;
             });
+
         case GET_TO_DOS:
             return action.todos;
+
+        case GET_A_DAY_TO_DOS:
+            return state.filter((todo) => (isTheSameDay(todo.date, action.date)))
         case UPDATE_TO_DO:
             return state.reduce((accu, current) => {
                 if (current._id !== action.update._id) {
@@ -21,8 +26,10 @@ export default function todoReducer(state = [], action) {
                 }
                 return accu.concat(action.update);
             }, []);
+
         case DELETE_A_TO_DO:
             return state.filter((todo) => todo._id !== action._id);
+
         default:
             return state;
     }

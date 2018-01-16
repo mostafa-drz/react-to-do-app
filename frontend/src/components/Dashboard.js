@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import ToDoList from './toDo/ToDoList';
-import {fetchToDos} from '../actions/todo';
 import NewToDo from './toDo/NewToDo';
 import '../stylesheets/dashboard.css';
 import Toggle from './Toggle';
@@ -19,13 +18,6 @@ class Dashboard extends Component {
   state={
     view:'list'
   }
-  componentDidMount() {
-    this.props.fetchToDos().catch((error)=>{
-      console.log(error.message);
-    });
-  }
-
-
   renderBasedOnView(){
     switch (this.state.view) {
       case 'list':
@@ -69,4 +61,4 @@ class Dashboard extends Component {
   }
 }
 
-export default connect(null,{fetchToDos})(Dashboard);
+export default Dashboard;

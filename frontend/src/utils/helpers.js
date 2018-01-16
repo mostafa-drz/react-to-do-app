@@ -38,4 +38,19 @@ const getRequestConfig = () => {
         }
     };
 };
-export { setTheTokenOnStorage, getTheTokenOnStorage, isUserAuthorized, responseErrorHandler, getRequestConfig, removeTokenOnStorage };
+
+const isTheSameDay = (date, intendedDay) => {
+    const startOfDay = intendedDay.setHours(0, 0, 0, 0);
+    const endOfDay = intendedDay.setHours(23, 59, 59);
+    return (new Date(date).getTime() >= startOfDay && new Date(date).getTime() <= endOfDay);
+}
+
+export {
+    setTheTokenOnStorage,
+    getTheTokenOnStorage,
+    isUserAuthorized,
+    responseErrorHandler,
+    getRequestConfig,
+    removeTokenOnStorage,
+    isTheSameDay,
+};

@@ -1,4 +1,4 @@
-import { ADD_TO_DO, UPDATE_TO_DO, GET_TO_DOS, DELETE_A_TO_DO } from './types';
+import { ADD_TO_DO, UPDATE_TO_DO, GET_TO_DOS, DELETE_A_TO_DO, GET_A_DAY_TO_DOS } from './types';
 import { getRequestConfig, responseErrorHandler } from '../utils/helpers';
 import axios from 'axios';
 
@@ -29,6 +29,12 @@ export function deleteAToDo({ _id }) {
     }
 }
 
+export function getADayToDos({ date }) {
+    return {
+        type: GET_A_DAY_TO_DOS,
+        date
+    }
+}
 
 export const addToDoOnServer = (todo) => {
     return async dispatch => {

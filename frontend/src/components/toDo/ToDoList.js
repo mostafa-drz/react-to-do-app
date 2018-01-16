@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ToDo from './ToDo';
 import '../../stylesheets/todolist.css';
 import Toggle from '../Toggle';
+import {fetchToDos} from '../../actions/todo';
 class ToDoList extends Component{
     constructor(props){
         super(props);
@@ -12,6 +13,12 @@ class ToDoList extends Component{
     state={
         showAll:true,
     }
+
+     componentDidMount() {
+    this.props.fetchToDos().catch((error)=>{
+      console.log(error.message);
+    });
+  }
 
     _toggle(status){
         this.setState((pre)=>{
@@ -44,4 +51,4 @@ function mapStateToProps(state){
         todos:state.todo
     }
 }
-export default connect(mapStateToProps)(ToDoList);
+export default connect(mapStateToProps,{fetchToDos})(ToDoList);

@@ -1,17 +1,19 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchADayToDos} from '../actions/day';
+import {getADayToDos} from '../actions/todo';
+import ToDo from './toDo/ToDo';
 class Day extends Component{
 
     componentDidMount(){
-        this.props.fetchADayToDos({date:new Date()});
+        this.props.getADayToDos({date:new Date()})
     }
 
     render(){
+        const {todos}=this.props;
         return(
-
-            <div>Day</div>
-        );
+        todos.map((todo)=>(
+            <ToDo todo={todo} key={todo._id}/>
+        )));
     }
 }
 
@@ -21,4 +23,4 @@ function mapStateToProps(state){
         todos:state.todo
     }
 }
-export default connect(mapStateToProps,{fetchADayToDos})(Day);
+export default connect(mapStateToProps,{getADayToDos})(Day);
