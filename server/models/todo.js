@@ -25,6 +25,26 @@ const todoSchema = new mongoose.Schema({
     deleted: {
         type: Boolean,
         default: false
+    },
+    reminder: {
+        enabled: {
+            type: Boolean,
+            default: false,
+        },
+        remindAt: {
+            type: Date,
+            default: null,
+        },
+        batchId: {
+            type: String,
+            default: null
+        }
+    }
+});
+
+todoSchema.pre('save', function(next) {
+    if (!this.reminder.remindAt) {
+        this.reminder.remindAt = new Date(new Date(this.date).getDate() - 1).getTime();
     }
 });
 
