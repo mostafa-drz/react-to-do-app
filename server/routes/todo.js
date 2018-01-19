@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { requireAuth } = require('../middlewares/auth');
 const { getUserToDos, addToDo, upddateAToDo, deleteAToDo, getADayToDos } = require('../controllers/todoControllers');
+const { sendToDoReminder } = require('../services/sendGrid');
+
 const ToDo = require('../models/todo');
 router.get('/api/todos', requireAuth, getUserToDos);
 
@@ -23,22 +25,28 @@ router.get('/api/todos/:id/reminder', async(req, res) => {
 });
 
 router.post('/api/todos/:id/reminder', async(req, res) => {
-    const { remindAt } = req.body;
-    console.log(remindAt);
-    const todo = await ToDo.findById(req.params.id);
-    if (todo.reminder.batchId || todo.reminder.enabled) {
-        return res.status(400).send({ message: 'A reminder already have been set for this task', reminder: todo.reminder });
-    }
-    todo.reminder.remindAt = new Date(remindAt);
-    todo.reminder.enabled = true;
-    //call function to schedule the email for sending email with send grid
-    //here you should update the batchid
-    const todoWithReminder = await todo.save();
-    if (!todoWithReminder) {
-        return res.status(500).send({ mesage: 'Something went wrong on the server' });
-    }
+    try {
+        const { remindAt } = req.body;
+        const todo = await ToDo.findById(req.params.id);
+        if (todo.reminder.batchId || todo.reminder.enabled) {
+            return res.status(400).send({ message: 'A reminder already have been set for this task', reminder: todo.reminder });
+        }
+        todo.reminder.remindAt = new Date(remindAt);
+        todo.reminder.enabled = true;
 
-    res.status(200).send({ reminder: todoWithReminder.reminder });
+        const result = await sendToDoReminder('mostafa69d@gmail.com', todo)
+
+        //call function to schedule the email for sending email with send grid
+        //here you should update the batchid
+        const todoWithReminder = await todo.save();
+        if (!todoWithReminder) {
+            return res.status(500).send({ mesage: 'Something went wrong on the server' });
+        }
+
+        res.status(200).send({ reminder: todoWithReminder.reminder });
+    } catch (error) {
+        res.status(500).send({ message: 'something went wrong' });
+    }
 });
 
 router.put('/api/todos/:id/reminder', async(req, res) => {
