@@ -1,36 +1,37 @@
 {
-    "name": "server",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node server",
-        "heroku-postbuild": "cd frontend/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
-    },
-    "engines": {
-        "node": "8.0.0"
-    },
-    "cacheDirectories": [
-        "node_modules",
-        "frontend/node_modules"
-    ],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "@sendgrid/mail": "^6.2.0",
-        "axios": "^0.17.1",
-        "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.18.2",
-        "cors": "^2.8.4",
-        "express": "^4.16.2",
-        "mongoose": "^5.0.0-rc2",
-        "passport": "^0.4.0",
-        "passport-google-oauth20": "^1.0.0",
-        "passport-jwt": "^3.0.1",
-        "passport-local": "^1.0.0",
-        "validator": "^9.2.0"
-    },
-    "devDependencies": {
-        "jest": "^22.0.4"
-    }
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "heroku-postbuild": "cd frontend/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "engines": {
+    "node": "8.0.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "frontend/node_modules"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.2.0",
+    "axios": "^0.17.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^5.0.0-rc2",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-jwt": "^3.0.1",
+    "passport-local": "^1.0.0",
+    "validator": "^9.2.0"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4"
+  }
 }
