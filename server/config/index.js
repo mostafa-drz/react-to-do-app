@@ -26,6 +26,6 @@ module.exports = {
     MONGODB_URI,
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
-    SEND_GRID_ID,
-    SEND_GRID_KEY
+    // SEND_GRID_ID,
+    // SEND_GRID_KEY
 };
