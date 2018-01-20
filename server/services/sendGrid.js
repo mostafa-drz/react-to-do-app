@@ -1,3 +1,4 @@
+/* I'm not gonna use this service in this project, but keep everthing here*/
 const sendgrid = require('@sendgrid/mail');
 const { SEND_GRID_ID, SEND_GRID_KEY } = require('../config');
 const axios = require('axios');
