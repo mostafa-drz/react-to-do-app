@@ -7,6 +7,7 @@ import RequireAuth from './auth/require_authentication_hoc';
 import Dashboard from './Dashboard';
 import Header from './header/Header';
 import GoogleLogIn from './auth/GoogleLogIn';
+import NotFound from './NotFound';
 class App extends Component {
   render() {
     return( 
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/signup" component={Signup}/>
             <Route path='/auth/google/callback' component={GoogleLogIn}/>
             <Route exact path="/dashboard" component={RequireAuth(Dashboard)}/>
+            <Route path="*" component={NotFound}/>
           </Switch>
         </div>
       </BrowserRouter>);
