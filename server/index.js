@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require("passport");
 const app = express();
-const path = require('path');
 const cookieSession = require('cookie-session')
 const { COOKIE_KEY } = require('./config');
 require('./services/db');
@@ -33,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 
     const path = require('path');
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
     });
 }
 
