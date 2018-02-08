@@ -4,14 +4,20 @@ const cors = require('cors');
 const passport = require("passport");
 const app = express();
 const path = require('path');
-
+const cookieSession = require('cookie-session')
+const { COOKIE_KEY } = require('./config');
 require('./services/db');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [COOKIE_KEY]
+}));
 app.use(passport.initialize());
+app.use(passport.session());
 
 
 

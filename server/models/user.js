@@ -31,7 +31,6 @@ userSchema.pre('save', function(next) {
             if (error) {
                 return next(error);
             }
-
             bcrypt.hash(user.password, salt, null, function(error, hash) {
                 if (error) {
                     return next(error);
@@ -47,13 +46,17 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.methods.comparePassword = function(enteredPassword, callback) {
-    bcrypt.compare(enteredPassword, this.password, function(error, isMatch) {
-        if (error) {
-            return callback(error);
-        }
+    if (!this.googleId) {
+        bcrypt.compare(enteredPassword, this.password, function(error, isMatch) {
+            if (error) {
+                return callback(error);
+            }
 
-        callback(null, isMatch);
-    });
+            callback(null, isMatch);
+        });
+    } else {
+        callback(null, false);
+    }
 };
 
 module.exports = mongoose.model('User', userSchema);

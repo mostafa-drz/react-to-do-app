@@ -65,7 +65,7 @@ const JwtLogin = new JwtStrategy(JwtStrategyOptions, (payload, done) => {
 const googleLogin = new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: '/api/auth/google/callback',
+        callbackURL: '/auth/google/callback',
         proxy: true
     },
     async(accessToken, refreshToken, profile, done) => {
