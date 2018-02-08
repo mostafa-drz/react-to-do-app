@@ -20,12 +20,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    tokens: {
-        google: {
-            type: String,
-            default: null
-        }
-    }
 });
 
 

@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(passport.initialize());
 
-app.use(express.static(path.resolve(__dirname, '../frontend/build')));
+
 
 const authRoute = require('./routes/auth');
 app.use(authRoute);
@@ -22,9 +22,13 @@ const todoRoutes = require('./routes/todo');
 app.use(todoRoutes);
 
 
-app.get('*', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../fontend/build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, '../frontend/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../fontend/build', 'index.html'))
+    });
+}
+
 
 
 app.listen(process.env.PORT || 3001, () => {
