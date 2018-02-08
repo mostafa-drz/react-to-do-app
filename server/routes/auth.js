@@ -21,7 +21,7 @@ router.post('/api/logout', (req, res) => {
 });
 router.post('/api/signup', signup);
 
-router.get("/api/auth/google", requireGoogleAuth);
+router.get("/auth/google", requireGoogleAuth);
 
 router.get('/api/auth/user', (req, res, next) => {
     if (req.user) {

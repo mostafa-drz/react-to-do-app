@@ -53,7 +53,7 @@ class Login extends Component{
                 <button type="button" className="btn" id="login__btn" onClick={this.login}>
                 Sign In
                 </button>
-                <Link to="/api/auth/google" target="_self" className='btn login__google'>Google</Link>
+                <a href="/auth/google" target="_self" className='btn login__google'>Google</a>
                 <Link to='/signup' className="login__signup">
                 Not a Member?
                 </Link>
