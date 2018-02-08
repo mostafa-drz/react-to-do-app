@@ -9,6 +9,8 @@ export default function(ComposedComponent) {
                     if (!this.props.authenticated) {
                         this.props.history.push('/login');
                     }
+                }).catch((error) => {
+                  this.props.history.push('/login');
                 });
         }
         componentWillUpdate(nextProps) {
@@ -18,8 +20,7 @@ export default function(ComposedComponent) {
         }
 
         render() {
-            return ( < ComposedComponent {...this.props }
-                />
+            return ( < ComposedComponent {...this.props }/>
             );
         }
     }
