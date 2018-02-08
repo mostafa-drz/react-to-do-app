@@ -12,7 +12,6 @@ class UserHeader extends Component {
   }
 
   _handleLogOutButton(e) {
-    e.preventDefault();
     this.props.logOutOnServer();
   }
 
@@ -30,16 +29,16 @@ class UserHeader extends Component {
             </a>
             <ul className="right hide-on-med-and-down">
                 <li>
-                <a  className="header__logout header__item" onClick={this._handleLogOutButton}>
+                <Link  to="/" className="header__logout header__item" onClick={this._handleLogOutButton}>
                     Log out
-                </a>
+                </Link>
                 </li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
                 <li>
-                <a className="header__logout header__item" onClick={this._handleLogOutButton}>
+                <Link to="/" className="header__logout header__item" onClick={this._handleLogOutButton}>
                     Log out
-                </a>
+                </Link>
                 </li>
             </ul>
             </div>
