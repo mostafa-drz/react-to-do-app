@@ -5,6 +5,9 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
+        "server": "nodemon index.js",
+        "client": "npm run start --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=FALSE npm install --prefix frontend && npm run build --prefix frontend"
     },
     "engines": {
@@ -33,6 +36,7 @@
         "validator": "^9.2.0"
     },
     "devDependencies": {
+        "concurrently": "^3.5.1",
         "jest": "^22.0.4"
     }
 }
