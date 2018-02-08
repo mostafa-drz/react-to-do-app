@@ -12,6 +12,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="body">
           <Header/>
+          <Switch>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/dashboard" component={Dashboard}/>
@@ -19,6 +20,7 @@ class App extends Component {
               <Redirect to="/login" />
             </Route>
             <Route path="*" component={NotFound}/>
+          </Switch>
         </div>
       </BrowserRouter>);
   }
