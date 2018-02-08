@@ -6,6 +6,7 @@ import CalendarView from './toDo/CalendarView';
 import MdFormatListBulleted from 'react-icons/lib/md/format-list-bulleted';
 import TiCalendarOutline from 'react-icons/lib/ti/calendar-outline';
 import RadioButton from './tools/RadioButton';
+import { connect } from 'react-redux';
 class Dashboard extends Component {
   constructor(props){
     super(props);

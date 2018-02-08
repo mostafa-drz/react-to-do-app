@@ -14,3 +14,8 @@
 .header__item--signUp {
     background: #00796b;
 }
+
+.header__logout {
+    border: none;
+    background: transparent;
+}

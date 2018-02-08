@@ -4,6 +4,8 @@ import ToDo from './ToDo';
 import '../../stylesheets/todolist.css';
 import Toggle from '../tools/Toggle';
 import {fetchToDos} from '../../actions/todo';
+import Loading from '../Loading';
+
 class ToDoList extends Component{
     constructor(props){
         super(props);
@@ -12,14 +14,21 @@ class ToDoList extends Component{
 
     state={
         showAll:true,
+        loaded: false
     }
 
      componentDidMount() {
-    this.props.fetchToDos().catch((error)=>{
-      console.log(error.message);
-    });
+       setTimeout(() => {
+          this.props.fetchToDos()
+            .then(() => {
+              console.log('got the todos');
+              this.setState({ loaded: true });
+            })
+            .catch((error)=>{
+                console.log(error.message);
+            });
+       }, 3000);
   }
-
     _toggle(status){
         this.setState((pre)=>{
             return{
@@ -29,7 +38,9 @@ class ToDoList extends Component{
     }
     render(){
         const { todos } = this.props;
-        return <div className="todolist">
+        const { loaded } = this.state;
+        return loaded ?
+        (<div className="todolist">
             <Toggle 
             defaultChecked={this.state.showAll} 
             onLabel="Show all" 
@@ -42,7 +53,9 @@ class ToDoList extends Component{
                   <ToDo todo={todo} className='todo'/>
                 </li>)}
             </ul>
-          </div>;
+          </div>)
+        :
+        (<Loading/>)
     }
 }
 

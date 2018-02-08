@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getCurrentUser } from '../../actions/auth';
 export default function(ComposedComponent) {
     class Authentication extends Component {
         componentWillMount() {
-            if (!this.props.authenticated) {
-                this.props.history.push('/login');
-            }
+            this.props.getCurrentUser()
+                .then(() => {
+                    if (!this.props.authenticated) {
+                        this.props.history.push('/login');
+                    }
+                });
         }
-
         componentWillUpdate(nextProps) {
             if (!nextProps.authenticated) {
                 this.props.history.push('/login');
@@ -15,8 +18,7 @@ export default function(ComposedComponent) {
         }
 
         render() {
-            return ( <
-                ComposedComponent {...this.props }
+            return ( < ComposedComponent {...this.props }
                 />
             );
         }
@@ -30,5 +32,5 @@ export default function(ComposedComponent) {
         return { authenticated: false };
 
     }
-    return connect(mapStateToProps)(Authentication);
+    return connect(mapStateToProps, { getCurrentUser })(Authentication);
 }

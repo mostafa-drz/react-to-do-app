@@ -1,0 +1,107 @@
+.loading {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.vertical {
+    display: flex;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+.horizontal {
+    display: flex;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    flex-direction: column;
+}
+
+.sq {
+    flex-grow: 1;
+    display: block;
+    border: .5px solid #0d47a1;
+    height: 200px;
+    margin: 0 5px;
+}
+
+.hq {
+    flex-grow: 1;
+    display: block;
+    border: .5px solid #0d48a1ab;
+    width: 200px;
+    margin: 5px 0;
+}
+
+.sq__top {
+    align-self: flex-end;
+    backface-visibility: hidden;
+    animation-name: scaleInc;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+}
+
+.sq__bottom {
+    align-self: flex-end;
+    margin: 0 1px;
+    animation-name: scaleDec;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+}
+
+.hq__right {
+    align-self: flex-end;
+    backface-visibility: hidden;
+    animation-name: scaleInc;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+}
+
+.hq__left {
+    align-self: flex-end;
+    backface-visibility: hidden;
+    animation-name: scaleDec;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+}
+
+@keyframes scaleInc {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleDec {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}

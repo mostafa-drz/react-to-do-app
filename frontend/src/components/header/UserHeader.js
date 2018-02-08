@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-import {removeTokenOnStorage} from '../../utils/helpers'
+import { removeTokenOnStorage } from '../../utils/helpers'
 import {Link} from 'react-router-dom';
 import FaAlignJustify from 'react-icons/lib/fa/align-justify';
+import { logOutOnServer } from '../../actions/auth';
+import { connect } from 'react-redux';
 import "../../stylesheets/header.css";
 class UserHeader extends Component {
   constructor(props) {
@@ -9,10 +11,11 @@ class UserHeader extends Component {
     this._handleLogOutButton = this._handleLogOutButton.bind(this);
   }
 
-  _handleLogOutButton() {
-    removeTokenOnStorage();
-    this.props.logout();
+  _handleLogOutButton(e) {
+    e.preventDefault();
+    this.props.logOutOnServer();
   }
+
   render() {
     return( 
         <nav className="header">
@@ -27,16 +30,16 @@ class UserHeader extends Component {
             </a>
             <ul className="right hide-on-med-and-down">
                 <li>
-                <Link to="/" className="header__logout" onClick={this._handleLogOutButton}>
+                <a  className="header__logout header__item" onClick={this._handleLogOutButton}>
                     Log out
-                </Link>
+                </a>
                 </li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
                 <li>
-                <Link to="/" className="header__logout" onClick={this._handleLogOutButton}>
+                <a className="header__logout header__item" onClick={this._handleLogOutButton}>
                     Log out
-                </Link>
+                </a>
                 </li>
             </ul>
             </div>
@@ -45,4 +48,4 @@ class UserHeader extends Component {
   }
 }
 
-export default UserHeader;
+export default connect(null, { logOutOnServer })(UserHeader);
