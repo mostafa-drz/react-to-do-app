@@ -6,6 +6,7 @@ import CalendarView from './toDo/CalendarView';
 import MdFormatListBulleted from 'react-icons/lib/md/format-list-bulleted';
 import TiCalendarOutline from 'react-icons/lib/ti/calendar-outline';
 import RadioButton from './tools/RadioButton';
+import { getCurrentUser } from '../actions/auth';
 import { connect } from 'react-redux';
 class Dashboard extends Component {
   constructor(props){
@@ -17,10 +18,22 @@ class Dashboard extends Component {
   state={
     view:'list'
   }
+
+  componentWillMount() {
+    this.props.getCurrentUser()
+      .then(() => {
+        if (!this.props.authenticated) {
+          this.props.history.push('/login');
+        }
+      }).catch((error) => {
+        this.props.history.push('/login');
+      });
+  }
+
   renderBasedOnView(){
     switch (this.state.view) {
       case 'list':
-         return <ToDoList key='todolist'/>;
+         return  <ToDoList key='todolist'/>;
       case 'calendar':
         return <CalendarView key='calendar'/>
       default:
@@ -34,7 +47,8 @@ class Dashboard extends Component {
     })
   }
   render() {
-    return <div className="container dashboard">
+    const { authenticated } = this.props;
+    return authenticated && <div className="container dashboard">
         <div className="row">
           <RadioButton
           buttons={[
@@ -61,5 +75,12 @@ class Dashboard extends Component {
       </div>;
   }
 }
+function mapStateToProps(state) {
+  if (state.auth) {
+    return { authenticated: state.auth.authenticated };
+  }
 
-export default Dashboard;
+  return { authenticated: false };
+
+}
+export default connect(mapStateToProps, { getCurrentUser })(Dashboard);
