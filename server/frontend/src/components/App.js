@@ -12,16 +12,13 @@ class App extends Component {
       <div className="body">
         <BrowserRouter>
               <div>
-                <Header/>
-                <Switch>
+                  <Header/>
                   <Route  exact path="/login" component={Login}/>
                   <Route  exact path="/signup" component={Signup}/>
                   <Route  exact path="/dashboard" component={Dashboard}/>
                   <Route exact path="/">
                     <Redirect to="/login" />
                   </Route>
-                  <Route  component={NotFound} />
-                </Switch>
             </div>
         </BrowserRouter>
       </div>
