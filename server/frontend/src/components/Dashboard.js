@@ -16,14 +16,16 @@ class Dashboard extends Component {
   }
 
   state={
-    view:'list'
+    view:'list',
+    error: false
   }
 
   componentWillMount() {
     if (!this.props.authenticated) {
       this.props.getCurrentUser()
         .catch((error) => {
-          this.props.history.push('/login');
+          this.setState({ error });
+          // this.props.history.push('/login');
         });
 
     }
@@ -48,8 +50,10 @@ class Dashboard extends Component {
   }
   render() {
     const { authenticated } = this.props;
+    const { error } = this.state;
     return authenticated && <div className="container dashboard">
         <div className="row">
+          {error && <p>{JSON.stringify(error)}</p>}
           <RadioButton
           buttons={[
             {
