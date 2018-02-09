@@ -26,7 +26,7 @@ class Dashboard extends Component {
         this.props.getCurrentUser()
           .catch((error) => {
             this.setState({ error });
-            // this.props.history.push('/login');
+            this.props.history.push('/login');
           });
       }
     }, 1000);
