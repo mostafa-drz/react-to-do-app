@@ -6,7 +6,7 @@ const app = express();
 const cookieSession = require('cookie-session')
 const { COOKIE_KEY } = require('./config');
 require('./services/db');
-
+require('./services/passport');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());

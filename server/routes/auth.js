@@ -1,4 +1,3 @@
-const passportService = require('../services/passport');
 const { signup, login, googleLogin, googleAuthCallback } = require('../controllers/authControllers');
 const { requireAuth, requireLogIn, requireGoogleAuth, requireGoogleLogIn } = require('../middlewares/auth');
 const User = require('../models/user');
