@@ -10,35 +10,18 @@ class GuestHeader extends Component {
                 <a to="/" className="brand-logo">
                     Do
                 </a>
-                <a data-activates="mobile-demo" className="button-collapse">
-                    <i className="material-icons">
-                    <FaAlignJustify />
-                    </i>
-                </a>
-                <ul className="right hide-on-med-and-down">
-                    <li>
-                    <Link to="/login" className="header__item">
-                        Log In
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/signup" className="header__item--signUp">
-                    Sign Up
-                    </Link>
-                    </li>
-                </ul>
-                <ul className="side-nav" id="mobile-demo">
-                    <li>
-                    <Link to="/login" className="header__item">
-                        Log In
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/signup" className="header__item--signUp">
-                        Sign Up
-                    </Link>
-                    </li>
-                </ul>
+                  <ul className="right">
+                      <li>
+                      <Link to="/login" className="header__item">
+                          Log In
+                      </Link>
+                      </li>
+                      <li>
+                      <Link to="/signup" className="header__item--signUp">
+                      Sign Up
+                      </Link>
+                      </li>
+                  </ul>
                 </div>
             </nav>
     )

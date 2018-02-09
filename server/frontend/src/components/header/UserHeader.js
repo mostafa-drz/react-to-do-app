@@ -5,6 +5,7 @@ import FaAlignJustify from 'react-icons/lib/fa/align-justify';
 import { logOutOnServer } from '../../actions/auth';
 import { connect } from 'react-redux';
 import "../../stylesheets/header.css";
+import $ from 'jquery';
 class UserHeader extends Component {
   constructor(props) {
     super(props);
@@ -18,30 +19,16 @@ class UserHeader extends Component {
   render() {
     return( 
         <nav className="header">
-            <div className="nav-wrapper">
-            <a to="/" className="brand-logo">
+            <Link to="/" className="brand-logo">
                 Do
-            </a>
-            <a data-activates="mobile-demo" className="button-collapse">
-                <i className="material-icons">
-                <FaAlignJustify />
-                </i>
-            </a>
-            <ul className="right hide-on-med-and-down">
+            </Link>
+            <ul className="right">
                 <li>
                 <Link  to="/" className="header__logout header__item" onClick={this._handleLogOutButton}>
                     Log out
                 </Link>
                 </li>
             </ul>
-            <ul className="side-nav" id="mobile-demo">
-                <li>
-                <Link to="/" className="header__logout header__item" onClick={this._handleLogOutButton}>
-                    Log out
-                </Link>
-                </li>
-            </ul>
-            </div>
         </nav>
     )
   }

@@ -17,11 +17,9 @@ class Dashboard extends Component {
 
   state={
     view:'list',
-    error: false
   }
 
   componentDidMount() {
-    setTimeout(() => {
       if (!this.props.authenticated) {
         this.props.getCurrentUser()
           .catch((error) => {
@@ -29,7 +27,6 @@ class Dashboard extends Component {
             this.props.history.push('/login');
           });
       }
-    }, 1000);
   }
 
   renderBasedOnView(){
@@ -50,10 +47,8 @@ class Dashboard extends Component {
   }
   render() {
     const { authenticated } = this.props;
-    const { error } = this.state;
     return authenticated && <div className="container dashboard">
         <div className="row">
-          {error && <p>{JSON.stringify(error)}</p>}
           <RadioButton
           buttons={[
             {
