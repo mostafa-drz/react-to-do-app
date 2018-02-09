@@ -8,7 +8,7 @@ const { tokenGenrator } = require('../utils/helper');
 const { JWT_SECRET_KEY } = require('../config/index');
 const jwt = require('jwt-simple');
 
-router.get('/api/dashboard', requireAuth, (req, res, next) => {
+router.get('/api/test', (req, res, next) => {
     res.status(200).send({ message: "here we go" });
 });
 
