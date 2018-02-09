@@ -74,7 +74,8 @@ const googleLogin = new GoogleStrategy({
             if (existingUser) {
                 return done(null, existingUser);
             }
-            const user = await new User({ googleId: profile.id, email: profile.emails[0].value }).save();
+
+            const user = await new User({ googleId: profile.id, googleEmail: profile.emails[0].value }).save();
             done(null, user);
         } catch (error) {
             return Promise.reject(error);
