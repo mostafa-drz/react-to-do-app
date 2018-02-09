@@ -19,7 +19,6 @@ class App extends Component {
             <Route exact path="/">
               <Redirect to="/login" />
             </Route>
-            <Route path="*" component={NotFound}/>
           </Switch>
         </div>
       </BrowserRouter>);
