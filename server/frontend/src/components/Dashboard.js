@@ -21,15 +21,15 @@ class Dashboard extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.authenticated) {
-      this.props.getCurrentUser()
-        .catch((error) => {
-          this.setState({ error });
-          // this.props.history.push('/login');
-        });
-
-    }
-    
+    setTimeout(() => {
+      if (!this.props.authenticated) {
+        this.props.getCurrentUser()
+          .catch((error) => {
+            this.setState({ error });
+            // this.props.history.push('/login');
+          });
+      }
+    }, 1000);
   }
 
   renderBasedOnView(){
