@@ -9,19 +9,17 @@ import NotFound from './NotFound';
 class App extends Component {
   render() {
     return( 
-      <BrowserRouter>
-        <div className="body">
-          <Header/>
-          <Switch>
-            <Route  path="/login" component={Login}/>
-            <Route  path="/signup" component={Signup}/>
-            <Route  path="/dashboard" component={Dashboard}/>
-            <Route  path="/">
-              <Redirect to="/login" />
-            </Route>
-          </Switch>
-        </div>
-      </BrowserRouter>);
+      <div className="body">
+        <BrowserRouter>
+              <div>
+                <Header/>
+                <Route  exact path="/login" component={Login}/>
+                <Route  exact path="/signup" component={Signup}/>
+                <Route  exact path="/dashboard" component={Dashboard}/>
+            </div>
+        </BrowserRouter>
+      </div>
+      );
   }
 }
 
