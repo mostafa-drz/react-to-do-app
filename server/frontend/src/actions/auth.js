@@ -19,11 +19,7 @@ export function logout() {
 export const logOutOnServer = () => {
     return async dispatch => {
         try {
-            const res = await axios.post('/api/logout', {
-                validateStatus: function(status) {
-                    return status < 500; // Reject only if the status code is greater than or equal to 500
-                }
-            });
+            const res = await axios.post('/api/logout');
             if (res.status === 200) {
                 removeTokenOnStorage();
                 dispatch({ type: LOG_OUT });
@@ -38,11 +34,7 @@ export const logOutOnServer = () => {
 export const logInOnServer = ({ email, password }) => {
     return async(dispatch) => {
         try {
-            const res = await axios.post('/api/login', { email, password }, {
-                validateStatus: function(status) {
-                    return status < 500; // Reject only if the status code is greater than or equal to 500
-                }
-            });
+            const res = await axios.post('/api/login', { email, password });
             if (res.status === 200) {
                 dispatch({ type: AUTH, auth: true });
                 setTheTokenOnStorage(res.data.token);
@@ -59,11 +51,7 @@ export const logInOnServer = ({ email, password }) => {
 export const signUpOnServer = ({ email, password }) => {
     return async(dispatch) => {
         try {
-            const res = await axios.post('/api/signup', { email, password }, {
-                validateStatus: function(status) {
-                    return status < 500; // Reject only if the status code is greater than or equal to 500
-                }
-            });
+            const res = await axios.post('/api/signup', { email, password });
             if (res.status === 200) {
                 dispatch({ type: AUTH, auth: true });
                 setTheTokenOnStorage(res.data.token);
@@ -82,9 +70,6 @@ export const googleLogInOnTheServer = ({ token }) => {
             const res = await axios.get("/api/auth/googleLogin", {
                 headers: {
                     googleToken: token
-                },
-                validateStatus: function(status) {
-                    return status < 500; // Reject only if the status code is greater than or equal to 500
                 }
             });
             if (res.status === 200) {
@@ -102,12 +87,7 @@ export const googleLogInOnTheServer = ({ token }) => {
 export const getCurrentUser = () => {
     return async dispatch => {
         try {
-            const res = await axios.get('/api/auth/user', {
-                validateStatus: function(status) {
-                    return status < 500; // Reject only if the status code is greater than or equal to 500
-                }
-            });
-            console.log(res);
+            const res = await axios.get('/api/auth/user');
             if (res.status === 200) {
                 dispatch({ type: AUTH, auth: true });
                 setTheTokenOnStorage(res.data.token);

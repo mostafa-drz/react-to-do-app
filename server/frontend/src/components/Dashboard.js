@@ -20,13 +20,16 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    try{
       if (!this.props.authenticated) {
         this.props.getCurrentUser()
           .catch((error) => {
-            this.setState({ error });
             this.props.history.push('/login');
           });
       }
+    }catch(error){
+      this.props.history.push('/login');
+    }
   }
 
   renderBasedOnView(){

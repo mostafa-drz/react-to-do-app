@@ -21,7 +21,6 @@ class ToDoList extends Component{
        setTimeout(() => {
           this.props.fetchToDos()
             .then(() => {
-              console.log('got the todos');
               this.setState({ loaded: true });
             })
             .catch((error)=>{
