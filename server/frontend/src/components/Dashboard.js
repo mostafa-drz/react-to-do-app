@@ -20,7 +20,7 @@ class Dashboard extends Component {
     error: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     setTimeout(() => {
       if (!this.props.authenticated) {
         this.props.getCurrentUser()
