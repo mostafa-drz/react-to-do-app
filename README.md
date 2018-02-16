@@ -14,7 +14,7 @@ First of all you should clone the project. Go to your terminal and run the comma
 
 ``` git clone https://github.com/mostafa69d/react-to-do-app.git ```
 
-Before you can run the app on your local machine you should install the dependencies. There are two `package.json` file in the project containing the app dependencies to install, One for the clientside and the otehr one for serverside. You don't need to install these dependencies seperately, go to the root of the project and run the command below:
+Before you can run the app on your local machine you should install the dependencies. There are two `package.json` file in the project containing the app dependencies to install, One for the clientside and the otehr one for serverside. You don't need to install these dependencies seperately, go to the root of the project and then change directory to server  ``` cd server ```. Now you can install all the dependencies easily by running the command below: 
 
 ``` npm run install-dep ```
 
