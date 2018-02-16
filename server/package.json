@@ -8,7 +8,8 @@
         "server": "nodemon index.js",
         "client": "npm run start --prefix frontend",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
-        "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
+        "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend",
+        "install-dep": "npm install --prefix frontend && npm install"
     },
     "engines": {
         "node": "8.0.0"
